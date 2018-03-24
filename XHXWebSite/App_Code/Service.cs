@@ -2329,6 +2329,16 @@ public class Service : System.Web.Services.WebService
     #endregion
     #endregion
     #endregion
+    #region 打分网页版
+
+    [WebMethod]
+    public DataSet SearchAnswer(string projectCode,string subjectCode,string shopCode)
+    {
+        string sql = string.Format("EXEC up_DSAT_Answer_R '{0}','{1}','{2}'", projectCode,subjectCode,shopCode);
+        DataSet ds = CommonHandler.query(sql);
+        return ds;
+    }
+    #endregion
     #endregion
 
     #region zhang.xichun

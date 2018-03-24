@@ -785,8 +785,6 @@
             this.cboChapter.Location = new System.Drawing.Point(283, 12);
             this.cboChapter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboChapter.Name = "cboChapter";
-            this.cboChapter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboChapter.Size = new System.Drawing.Size(100, 21);
             this.cboChapter.TabIndex = 9;
             // 
@@ -804,8 +802,6 @@
             this.cboProject.Location = new System.Drawing.Point(65, 12);
             this.cboProject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboProject.Name = "cboProject";
-            this.cboProject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboProject.Size = new System.Drawing.Size(100, 21);
             this.cboProject.TabIndex = 7;
             this.cboProject.SelectedIndexChanged += new System.EventHandler(this.cboProject_SelectedIndexChanged);
@@ -969,7 +965,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 42;
+            this.gridColumn9.Width = 34;
             // 
             // gcSubjectCode
             // 
@@ -980,7 +976,7 @@
             this.gcSubjectCode.Name = "gcSubjectCode";
             this.gcSubjectCode.Visible = true;
             this.gcSubjectCode.VisibleIndex = 1;
-            this.gcSubjectCode.Width = 42;
+            this.gcSubjectCode.Width = 34;
             // 
             // gcFullScore
             // 
@@ -991,7 +987,7 @@
             this.gcFullScore.Name = "gcFullScore";
             this.gcFullScore.Visible = true;
             this.gcFullScore.VisibleIndex = 2;
-            this.gcFullScore.Width = 42;
+            this.gcFullScore.Width = 34;
             // 
             // gridColumn19
             // 
@@ -1000,7 +996,7 @@
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.Visible = true;
             this.gridColumn19.VisibleIndex = 3;
-            this.gridColumn19.Width = 60;
+            this.gridColumn19.Width = 51;
             // 
             // gridColumn18
             // 
@@ -1009,7 +1005,7 @@
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 4;
-            this.gridColumn18.Width = 60;
+            this.gridColumn18.Width = 51;
             // 
             // gridColumn17
             // 
@@ -1018,7 +1014,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 5;
-            this.gridColumn17.Width = 60;
+            this.gridColumn17.Width = 51;
             // 
             // gridColumn11
             // 
@@ -1030,7 +1026,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 6;
-            this.gridColumn11.Width = 42;
+            this.gridColumn11.Width = 34;
             // 
             // memImplemention
             // 
@@ -1055,7 +1051,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 7;
-            this.gridColumn12.Width = 55;
+            this.gridColumn12.Width = 46;
             // 
             // memCheckPoint
             // 
@@ -1078,7 +1074,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 9;
-            this.gridColumn1.Width = 40;
+            this.gridColumn1.Width = 88;
             // 
             // cboSubjectType
             // 
@@ -1097,7 +1093,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 10;
-            this.gridColumn13.Width = 78;
+            this.gridColumn13.Width = 55;
             // 
             // memDesc
             // 
@@ -1122,7 +1118,7 @@
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
             this.gridColumn14.VisibleIndex = 11;
-            this.gridColumn14.Width = 87;
+            this.gridColumn14.Width = 61;
             // 
             // memAddtionDesc
             // 
@@ -1147,7 +1143,7 @@
             this.gridColumn15.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gridColumn15.Visible = true;
             this.gridColumn15.VisibleIndex = 15;
-            this.gridColumn15.Width = 30;
+            this.gridColumn15.Width = 54;
             // 
             // btnFile
             // 
@@ -1168,7 +1164,7 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 19;
-            this.gridColumn16.Width = 30;
+            this.gridColumn16.Width = 20;
             // 
             // memRemark
             // 
@@ -1192,7 +1188,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 13;
-            this.gridColumn2.Width = 30;
+            this.gridColumn2.Width = 20;
             // 
             // memStandard
             // 
@@ -1214,7 +1210,7 @@
             this.gcLoss.Name = "gcLoss";
             this.gcLoss.Visible = true;
             this.gcLoss.VisibleIndex = 18;
-            this.gcLoss.Width = 30;
+            this.gcLoss.Width = 20;
             // 
             // btnLoss
             // 
@@ -1235,7 +1231,7 @@
             this.gcInspectionStandard.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways;
             this.gcInspectionStandard.Visible = true;
             this.gcInspectionStandard.VisibleIndex = 12;
-            this.gcInspectionStandard.Width = 30;
+            this.gcInspectionStandard.Width = 20;
             // 
             // btnInspectionStandard
             // 
@@ -1255,7 +1251,7 @@
             this.gbScoreCheck.Name = "gbScoreCheck";
             this.gbScoreCheck.Visible = true;
             this.gbScoreCheck.VisibleIndex = 16;
-            this.gbScoreCheck.Width = 38;
+            this.gbScoreCheck.Width = 78;
             // 
             // gridColumn5
             // 
@@ -1265,7 +1261,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 8;
-            this.gridColumn5.Width = 40;
+            this.gridColumn5.Width = 70;
             // 
             // cboGridExamType
             // 
@@ -1281,7 +1277,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 20;
-            this.gridColumn6.Width = 57;
+            this.gridColumn6.Width = 20;
             // 
             // gridColumn7
             // 
@@ -1290,7 +1286,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 14;
-            this.gridColumn7.Width = 30;
+            this.gridColumn7.Width = 52;
             // 
             // btnSroceSet
             // 
@@ -1308,7 +1304,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 17;
-            this.gridColumn8.Width = 26;
+            this.gridColumn8.Width = 35;
             // 
             // gcMember
             // 
@@ -1320,6 +1316,7 @@
             this.gcMember.Name = "gcMember";
             this.gcMember.Visible = true;
             this.gcMember.VisibleIndex = 21;
+            this.gcMember.Width = 21;
             // 
             // cboMemberType
             // 
@@ -1379,8 +1376,6 @@
             this.cboExamType.Location = new System.Drawing.Point(660, 12);
             this.cboExamType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboExamType.Name = "cboExamType";
-            this.cboExamType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboExamType.Size = new System.Drawing.Size(100, 21);
             this.cboExamType.TabIndex = 15;
             // 
@@ -1398,8 +1393,6 @@
             this.cboLink.Location = new System.Drawing.Point(479, 12);
             this.cboLink.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboLink.Name = "cboLink";
-            this.cboLink.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboLink.Size = new System.Drawing.Size(100, 21);
             this.cboLink.TabIndex = 11;
             // 
@@ -1417,8 +1410,6 @@
             this.cboChapterForSubject.Location = new System.Drawing.Point(283, 12);
             this.cboChapterForSubject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboChapterForSubject.Name = "cboChapterForSubject";
-            this.cboChapterForSubject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboChapterForSubject.Size = new System.Drawing.Size(100, 21);
             this.cboChapterForSubject.TabIndex = 9;
             this.cboChapterForSubject.SelectedIndexChanged += new System.EventHandler(this.cboChapterForSubject_SelectedIndexChanged);
@@ -1437,8 +1428,6 @@
             this.cboProjectForSubject.Location = new System.Drawing.Point(65, 12);
             this.cboProjectForSubject.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboProjectForSubject.Name = "cboProjectForSubject";
-            this.cboProjectForSubject.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboProjectForSubject.Size = new System.Drawing.Size(100, 21);
             this.cboProjectForSubject.TabIndex = 7;
             this.cboProjectForSubject.SelectedIndexChanged += new System.EventHandler(this.cboProjectForSubject_SelectedIndexChanged);

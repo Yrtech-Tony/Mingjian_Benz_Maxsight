@@ -53,10 +53,12 @@ public class CommonHandler
     public static DataSet query(string sql)
     {
         DataSet ds = new DataSet(); //创建dataSet对象 
-        string ConnectionString = "Provider=sqloledb;Data Source=123.57.229.128;Initial Catalog=BENZ;user id=sa;pwd=mxT1@mfb;timeout = 0";
+        string ConnectionString = "Provider=sqloledb;Data Source=123.57.229.128;Initial Catalog=BENZ_new;user id=sa;pwd=mxT1@mfb;timeout = 0";
         using (OleDbConnection conn = new OleDbConnection(ConnectionString))
         {
-            using (OleDbDataAdapter da = new OleDbDataAdapter(sql, conn))
+            OleDbCommand com = new OleDbCommand(sql, conn);
+            com.CommandTimeout = 300;
+            using (OleDbDataAdapter da = new OleDbDataAdapter(com))
             {
                 try
                 {
