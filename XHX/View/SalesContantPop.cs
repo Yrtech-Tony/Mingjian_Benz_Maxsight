@@ -328,11 +328,11 @@ namespace XHX.View
                     }
                     else
                     {
-                        if ((dto.Score == null) && _scoreCheck)
-                        {
-                            CommonHandler.ShowMessage(MessageType.Information, "请填写分数");
-                            return;
-                        }
+                        //if ((dto.Score == null) && _scoreCheck)
+                        //{
+                        //    CommonHandler.ShowMessage(MessageType.Information, "请填写分数");
+                        //    return;
+                        //}
                     }
 
                 }
