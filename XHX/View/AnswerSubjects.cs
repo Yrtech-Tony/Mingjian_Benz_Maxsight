@@ -931,7 +931,7 @@ namespace XHX.View
             btnPrevious.Enabled = true;
             char checkType = '0';
 
-            DataSet ds1 = service.SearchSubjectBySubjectCode(ProjectCode_Golbal, ShopCode_Golbal);
+            DataSet ds1 = service.SearchSubjectBySubjectCode(ProjectCode_Golbal,SubjectCode_Golbal);
             if (ds1.Tables[0].Rows.Count == 0)
             {
                 if (SubjectTypeCode == "SA")

@@ -16,8 +16,9 @@ namespace XHX.DTO
         public decimal? Score { get; set; }
         public bool Notinvolved { get; set; }
         public string LossDesc { get; set; }
-        public string InUserId { get; set; }
         public string MemberType { get; set; }
+        public string InUserId { get; set; }
         public char StatusType { get; set; }
+      
     }
 }

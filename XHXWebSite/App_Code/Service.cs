@@ -2200,7 +2200,7 @@ public class Service : System.Web.Services.WebService
             return null;
         }
 
-    } 
+    }
     #endregion
     #region BenzReport
     #region 同步数据
@@ -2331,13 +2331,109 @@ public class Service : System.Web.Services.WebService
     #endregion
     #region 打分网页版
 
+    #region 查询缓存数据
+
     [WebMethod]
-    public DataSet SearchAnswer(string projectCode,string subjectCode,string shopCode)
+    public List<DataSet> GetProjectsAndShopInfo()
     {
-        string sql = string.Format("EXEC up_DSAT_Answer_R '{0}','{1}','{2}'", projectCode,subjectCode,shopCode);
+        List<DataSet> list = new List<DataSet>();
+        list.Add(GetAllProject());
+        list.Add(SearchShop("",""));
+        return list;
+    }
+    [WebMethod]
+    public List<DataSet> GetSubjectAndAnswerInfo(string projectCode, string shopcde, string subjectCode, string examTypeCode)
+    {
+
+        List<DataSet> list = new List<DataSet>();
+        list.Add(SearchSubject(projectCode,"","",examTypeCode));
+        list.Add(SearchInspectionStandard(projectCode,subjectCode));
+        list.Add(SearchLoss(projectCode,subjectCode));
+        list.Add(SearchSubjectFile(projectCode, subjectCode));
+        list.Add(SearchAnswer(projectCode, subjectCode, shopcde));
+        list.Add(SearchLossDesc(projectCode, shopcde, subjectCode));
+        list.Add(SearchAnswerScoreDtlSalesConsltantByShopCode(projectCode, shopcde));
+        list.Add(SearchAnswerScoreDtlByShopCode(projectCode, shopcde, subjectCode));
+        return list;
+    }
+    #endregion
+
+
+    [WebMethod]
+    public DataSet SearchAnswer(string projectCode, string subjectCode, string shopCode)
+    {
+        string sql = string.Format("EXEC up_DSAT_Answer_R '{0}','{1}','{2}'", projectCode, subjectCode, shopCode);
         DataSet ds = CommonHandler.query(sql);
         return ds;
     }
+    [WebMethod]
+    public DataSet SearchAnswerScoreDtlByShopCode(string projectCode, string shopCode, string subjectCode)
+    {
+        string sql = string.Format("EXEC up_DSAT_AnswerScoreDtlByShopCode_R '{0}','{1}','{2}'", projectCode, subjectCode, shopCode);
+        DataSet ds = CommonHandler.query(sql)
+;
+        return ds;
+    }
+    [WebMethod]
+    public DataSet SearchAnswerScoreDtlSalesConsltantByShopCode(string projectCode, string shopCode)
+    {
+        string sql = string.Format("EXEC up_DSAT_AnswerScoreDtlSalesConsltantByShopCode_R '{0}','{1}'", projectCode, shopCode);
+        DataSet ds = CommonHandler.query(sql);
+
+        return ds;
+    }
+    [WebMethod]
+    public void SaveSaleContantList(List<String> dataList)
+    {
+        foreach (String data in dataList)
+        {
+            try
+            {
+                string[] properties = data.Split('$');
+                string projectCode = properties[0];
+                string shopCode = properties[1];
+                string seqNO = properties[2];
+                string salesContant = properties[3];
+                string memberType = properties[4];
+
+                string sql = string.Format("EXEC up_DSAT_AnswerScoreDtlSalesConsltant_S '{0}','{1}','{2}','{3}','{4}'", projectCode, shopCode, seqNO, salesContant, memberType);
+                DataSet ds = CommonHandler.query(sql);
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+    }
+    [WebMethod]
+    public void SaveSaleContantScoreList(List<String> dataList)
+    {
+        foreach (String data in dataList)
+        {
+            try
+            {
+                string[] properties = data.Split('$');
+                string projectCode = properties[0];
+                string subjectCode = properties[1];
+                string shopCode = properties[2];
+                string seqNO = properties[3];
+                string salesContant = properties[4];
+                string score = properties[5];
+                string lossDesc = properties[6];
+                string inuserId = properties[7];
+
+                string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant, lossDesc, inuserId);
+                DataSet ds = CommonHandler.query(sql);
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+    }
+
     #endregion
     #endregion
 
@@ -3326,13 +3422,14 @@ public class Service : System.Web.Services.WebService
                 string remark = properties[4];
                 string imageName = properties[5];
                 string userid = properties[6];
-                char checkType = Convert.ToChar(properties[7]);
-                string passReCheck = properties[8];
-                string date = properties[9];
-                string inDate = properties[10];
+                string photoScore = properties[7];
+                char checkType = Convert.ToChar('0');
+                string passReCheck = "0";
+                string date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                string inDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 SaveAnswer(projectCode, subjectCode, shopCode,
                            score, remark, imageName, userid,
-                           checkType, passReCheck, date, inDate, "");
+                           checkType, passReCheck, date, inDate, photoScore);
             }
             catch (Exception)
             {
@@ -3685,11 +3782,11 @@ public class Service : System.Web.Services.WebService
                                                  seqNo, lossDesc, picName);
         CommonHandler.query(sql);
 
-        string sql1 = string.Format(@"EXEC up_DSAT_AnswerDtl3_U
-                                    @ProjectCode = '{0}'
-                                     ,@SubjectCode = '{1}'
-                                     ,@ShopCode = '{2}'", projectCode, subjectCode, shopCode);
-        CommonHandler.query(sql1);
+        //        string sql1 = string.Format(@"EXEC up_DSAT_AnswerDtl3_U
+        //                                    @ProjectCode = '{0}'
+        //                                     ,@SubjectCode = '{1}'
+        //                                     ,@ShopCode = '{2}'", projectCode, subjectCode, shopCode);
+        //        CommonHandler.query(sql1);
     }
 
     #endregion
