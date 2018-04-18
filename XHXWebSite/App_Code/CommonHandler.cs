@@ -52,8 +52,9 @@ public class CommonHandler
     }
     public static DataSet query(string sql)
     {
+     //   log(sql);
         DataSet ds = new DataSet(); //创建dataSet对象 
-        string ConnectionString = "Provider=sqloledb;Data Source=123.57.229.128;Initial Catalog=BENZ_new;user id=sa;pwd=mxT1@mfb;timeout = 0";
+        string ConnectionString = "Provider=sqloledb;Data Source=123.57.229.128;Initial Catalog=BENZ;user id=sa;pwd=mxT1@mfb;timeout = 0";
         using (OleDbConnection conn = new OleDbConnection(ConnectionString))
         {
             OleDbCommand com = new OleDbCommand(sql, conn);
@@ -67,7 +68,6 @@ public class CommonHandler
                 }
                 catch (Exception ex)
                 {
-
                     log(ex.ToString() + " " + "\r\n" + sql);
                 }
             }

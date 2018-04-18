@@ -2202,6 +2202,26 @@ public class Service : System.Web.Services.WebService
 
     }
     #endregion
+    #region 复审分配
+    [WebMethod]
+    public void ShopRecheckUserSave(string projectCode, string shopCode, string recheckUserId, string inUserId)
+    {
+        string sql = string.Format("exec up_DSAT_ShopRecheckUser_S '{0}','{1}','{2}','{3}'",projectCode,shopCode,recheckUserId,inUserId);
+        CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public void ShopRecheckUserDelete(string projectCode, string shopCode, string recheckUserId)
+    {
+        string sql = string.Format("exec up_DSAT_ShopRecheckUser_D '{0}','{1}','{2}'", projectCode, shopCode, recheckUserId);
+        CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public DataSet ShopRecheckUserSearch(string projectCode, string shopCode, string recheckUserId)
+    {
+        string sql = string.Format("exec up_DSAT_ShopRecheckUser_S '{0}','{1}','{2}'", projectCode, shopCode, recheckUserId);
+        return CommonHandler.query(sql);
+    }
+    #endregion
     #region BenzReport
     #region 同步数据
     #region 上传报告数据
@@ -2338,7 +2358,7 @@ public class Service : System.Web.Services.WebService
     {
         List<DataSet> list = new List<DataSet>();
         list.Add(GetAllProject());
-        list.Add(SearchShop("",""));
+        list.Add(SearchShop("", ""));
         return list;
     }
     [WebMethod]
@@ -2346,9 +2366,9 @@ public class Service : System.Web.Services.WebService
     {
 
         List<DataSet> list = new List<DataSet>();
-        list.Add(SearchSubject(projectCode,"","",examTypeCode));
-        list.Add(SearchInspectionStandard(projectCode,subjectCode));
-        list.Add(SearchLoss(projectCode,subjectCode));
+        list.Add(SearchSubject(projectCode, "", "", examTypeCode));
+        list.Add(SearchInspectionStandard(projectCode, subjectCode));
+        list.Add(SearchLoss(projectCode, subjectCode));
         list.Add(SearchSubjectFile(projectCode, subjectCode));
         list.Add(SearchAnswer(projectCode, subjectCode, shopcde));
         list.Add(SearchLossDesc(projectCode, shopcde, subjectCode));
