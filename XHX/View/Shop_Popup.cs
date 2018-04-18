@@ -36,18 +36,23 @@ namespace XHX.View
                 return selection;
             }
         }
+        public string _projectCode;
+        public string _userId;
+        public string _type;
         public Shop_Popup()
         {
 
         }
-        public Shop_Popup(string shopCode, string shopName, bool check)
+        public Shop_Popup(string shopCode, string shopName, bool check,string projectCode,string userId,string type)
         {
             InitializeComponent();
             this.LookAndFeel.SetSkinStyle(CommonHandler.Skin_Name);
-
+            _projectCode = projectCode;
+            _userId = userId;
+            _type = type;
             OnLoadView();
             //CommonHandler.SetComboBoxSelectedValue(cboArea, areaCode);
-            Search(shopCode, shopName);
+            Search(shopCode, shopName, projectCode, userId, type);
             if (check)
             {
                 selection = new GridCheckMarksSelection(gridView1);
@@ -60,13 +65,22 @@ namespace XHX.View
         }
         public void OnLoadView()
         {
+            
             //BindComBox.BindArea(cboArea);
             // CommonHandler.BindComboBoxItems<AreaDto>(cboAreaCode, BindComBox.GetAllArea(), "AreaName", "AreaCode");
             //cboArea.Enabled = false;
         }
-        private void Search(string shopCode, string shopName)
+        private void Search(string shopCode, string shopName,string projectCode,string userid,string type)
         {
-            DataSet ds = webService.SearchShop(shopCode, shopName);
+            DataSet ds = new DataSet();
+            if (type == "RecheckUser")//复审界面选择经销商
+            {
+                ds = webService.SearchShopForRecheckUser(projectCode,shopCode,userid);
+            }
+            else
+            {
+                ds = webService.SearchShop(shopCode, shopName);
+            }
             List<ShopDto> shoplist = new List<ShopDto>();
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -75,10 +89,10 @@ namespace XHX.View
                     ShopDto shop = new ShopDto();
                     //shop.AreaCode = Convert.ToString(ds.Tables[0].Rows[i]["AreaCode"]);
                     //shop.AreaName = Convert.ToString(ds.Tables[0].Rows[i]["AreaName"]);
-                    shop.SaleSmall = Convert.ToString(ds.Tables[0].Rows[i]["SellSmallAreaName"]);
-                    shop.SaleBig = Convert.ToString(ds.Tables[0].Rows[i]["SellBigAreaName"]);
-                    shop.AfterSmall = Convert.ToString(ds.Tables[0].Rows[i]["AfterSmallAreaName"]);
-                    shop.AfterBig = Convert.ToString(ds.Tables[0].Rows[i]["AfterBigAreaName"]);
+                    //shop.SaleSmall = Convert.ToString(ds.Tables[0].Rows[i]["SellSmallAreaName"]);
+                    //shop.SaleBig = Convert.ToString(ds.Tables[0].Rows[i]["SellBigAreaName"]);
+                    //shop.AfterSmall = Convert.ToString(ds.Tables[0].Rows[i]["AfterSmallAreaName"]);
+                    //shop.AfterBig = Convert.ToString(ds.Tables[0].Rows[i]["AfterBigAreaName"]);
                     shop.ShopCode = Convert.ToString(ds.Tables[0].Rows[i]["ShopCode"]);
                     shop.ShopName = Convert.ToString(ds.Tables[0].Rows[i]["ShopName"]);
                     shoplist.Add(shop);
@@ -92,7 +106,7 @@ namespace XHX.View
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Search(txtShopCode.Text, txtShop.Text);
+            Search(txtShopCode.Text, txtShop.Text,_projectCode,_userId,_type);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

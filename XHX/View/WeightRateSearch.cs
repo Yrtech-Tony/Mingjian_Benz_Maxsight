@@ -60,7 +60,7 @@ namespace XHX.View
         private void tbnShop_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             List<ShopDto> shopList = new List<ShopDto>();
-            Shop_Popup shop = new Shop_Popup("", "", true);
+            Shop_Popup shop = new Shop_Popup("", "", true,"",UserInfoDto.UserID,"");
             shop.ShowDialog();
 
             string shopName = string.Empty;

@@ -157,8 +157,6 @@
             this.gcSaleSmall.Name = "gcSaleSmall";
             this.gcSaleSmall.OptionsColumn.AllowEdit = false;
             this.gcSaleSmall.OptionsColumn.AllowSize = false;
-            this.gcSaleSmall.Visible = true;
-            this.gcSaleSmall.VisibleIndex = 2;
             // 
             // gcSaleBig
             // 
@@ -168,8 +166,6 @@
             this.gcSaleBig.FieldName = "SaleBig";
             this.gcSaleBig.Name = "gcSaleBig";
             this.gcSaleBig.OptionsColumn.AllowEdit = false;
-            this.gcSaleBig.Visible = true;
-            this.gcSaleBig.VisibleIndex = 3;
             // 
             // gcAfterSmall
             // 
@@ -179,8 +175,6 @@
             this.gcAfterSmall.FieldName = "AfterSmall";
             this.gcAfterSmall.Name = "gcAfterSmall";
             this.gcAfterSmall.OptionsColumn.AllowEdit = false;
-            this.gcAfterSmall.Visible = true;
-            this.gcAfterSmall.VisibleIndex = 4;
             // 
             // gcAfterBig
             // 
@@ -190,8 +184,6 @@
             this.gcAfterBig.FieldName = "AfterBig";
             this.gcAfterBig.Name = "gcAfterBig";
             this.gcAfterBig.OptionsColumn.AllowEdit = false;
-            this.gcAfterBig.Visible = true;
-            this.gcAfterBig.VisibleIndex = 5;
             // 
             // gcUseChk
             // 

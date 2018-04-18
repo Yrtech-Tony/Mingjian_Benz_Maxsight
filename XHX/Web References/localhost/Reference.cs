@@ -32,6 +32,10 @@ namespace XHX.localhost {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PictureDto[]))]
     public partial class Service : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback SearchShopOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SearchShopForRecheckUserOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SaveShopOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteShopOperationCompleted;
@@ -456,6 +460,8 @@ namespace XHX.localhost {
         
         private System.Threading.SendOrPostCallback ShopRecheckUserDeleteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ShopRecheckUserSearchForPopupOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ShopRecheckUserSearchOperationCompleted;
         
         private System.Threading.SendOrPostCallback UploadAllScoreOperationCompleted;
@@ -500,8 +506,6 @@ namespace XHX.localhost {
         
         private System.Threading.SendOrPostCallback SaveSaleContantScoreListOperationCompleted;
         
-        private System.Threading.SendOrPostCallback SearchShopOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -539,6 +543,12 @@ namespace XHX.localhost {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event SearchShopCompletedEventHandler SearchShopCompleted;
+        
+        /// <remarks/>
+        public event SearchShopForRecheckUserCompletedEventHandler SearchShopForRecheckUserCompleted;
         
         /// <remarks/>
         public event SaveShopCompletedEventHandler SaveShopCompleted;
@@ -1177,6 +1187,9 @@ namespace XHX.localhost {
         public event ShopRecheckUserDeleteCompletedEventHandler ShopRecheckUserDeleteCompleted;
         
         /// <remarks/>
+        public event ShopRecheckUserSearchForPopupCompletedEventHandler ShopRecheckUserSearchForPopupCompleted;
+        
+        /// <remarks/>
         public event ShopRecheckUserSearchCompletedEventHandler ShopRecheckUserSearchCompleted;
         
         /// <remarks/>
@@ -1243,7 +1256,68 @@ namespace XHX.localhost {
         public event SaveSaleContantScoreListCompletedEventHandler SaveSaleContantScoreListCompleted;
         
         /// <remarks/>
-        public event SearchShopCompletedEventHandler SearchShopCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchShop", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet SearchShop(string shopCode, string shopName) {
+            object[] results = this.Invoke("SearchShop", new object[] {
+                        shopCode,
+                        shopName});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SearchShopAsync(string shopCode, string shopName) {
+            this.SearchShopAsync(shopCode, shopName, null);
+        }
+        
+        /// <remarks/>
+        public void SearchShopAsync(string shopCode, string shopName, object userState) {
+            if ((this.SearchShopOperationCompleted == null)) {
+                this.SearchShopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchShopOperationCompleted);
+            }
+            this.InvokeAsync("SearchShop", new object[] {
+                        shopCode,
+                        shopName}, this.SearchShopOperationCompleted, userState);
+        }
+        
+        private void OnSearchShopOperationCompleted(object arg) {
+            if ((this.SearchShopCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SearchShopCompleted(this, new SearchShopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchShopForRecheckUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet SearchShopForRecheckUser(string projectCode, string shopCode, string recheckUserId) {
+            object[] results = this.Invoke("SearchShopForRecheckUser", new object[] {
+                        projectCode,
+                        shopCode,
+                        recheckUserId});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SearchShopForRecheckUserAsync(string projectCode, string shopCode, string recheckUserId) {
+            this.SearchShopForRecheckUserAsync(projectCode, shopCode, recheckUserId, null);
+        }
+        
+        /// <remarks/>
+        public void SearchShopForRecheckUserAsync(string projectCode, string shopCode, string recheckUserId, object userState) {
+            if ((this.SearchShopForRecheckUserOperationCompleted == null)) {
+                this.SearchShopForRecheckUserOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchShopForRecheckUserOperationCompleted);
+            }
+            this.InvokeAsync("SearchShopForRecheckUser", new object[] {
+                        projectCode,
+                        shopCode,
+                        recheckUserId}, this.SearchShopForRecheckUserOperationCompleted, userState);
+        }
+        
+        private void OnSearchShopForRecheckUserOperationCompleted(object arg) {
+            if ((this.SearchShopForRecheckUserCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SearchShopForRecheckUserCompleted(this, new SearchShopForRecheckUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveShop", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -8305,9 +8379,9 @@ namespace XHX.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ShopRecheckUserSearch", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet ShopRecheckUserSearch(string projectCode, string shopCode, string recheckUserId) {
-            object[] results = this.Invoke("ShopRecheckUserSearch", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ShopRecheckUserSearchForPopup", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet ShopRecheckUserSearchForPopup(string projectCode, string shopCode, string recheckUserId) {
+            object[] results = this.Invoke("ShopRecheckUserSearchForPopup", new object[] {
                         projectCode,
                         shopCode,
                         recheckUserId});
@@ -8315,19 +8389,50 @@ namespace XHX.localhost {
         }
         
         /// <remarks/>
-        public void ShopRecheckUserSearchAsync(string projectCode, string shopCode, string recheckUserId) {
-            this.ShopRecheckUserSearchAsync(projectCode, shopCode, recheckUserId, null);
+        public void ShopRecheckUserSearchForPopupAsync(string projectCode, string shopCode, string recheckUserId) {
+            this.ShopRecheckUserSearchForPopupAsync(projectCode, shopCode, recheckUserId, null);
         }
         
         /// <remarks/>
-        public void ShopRecheckUserSearchAsync(string projectCode, string shopCode, string recheckUserId, object userState) {
+        public void ShopRecheckUserSearchForPopupAsync(string projectCode, string shopCode, string recheckUserId, object userState) {
+            if ((this.ShopRecheckUserSearchForPopupOperationCompleted == null)) {
+                this.ShopRecheckUserSearchForPopupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnShopRecheckUserSearchForPopupOperationCompleted);
+            }
+            this.InvokeAsync("ShopRecheckUserSearchForPopup", new object[] {
+                        projectCode,
+                        shopCode,
+                        recheckUserId}, this.ShopRecheckUserSearchForPopupOperationCompleted, userState);
+        }
+        
+        private void OnShopRecheckUserSearchForPopupOperationCompleted(object arg) {
+            if ((this.ShopRecheckUserSearchForPopupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ShopRecheckUserSearchForPopupCompleted(this, new ShopRecheckUserSearchForPopupCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ShopRecheckUserSearch", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet ShopRecheckUserSearch(string projectCode, string shopCode) {
+            object[] results = this.Invoke("ShopRecheckUserSearch", new object[] {
+                        projectCode,
+                        shopCode});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ShopRecheckUserSearchAsync(string projectCode, string shopCode) {
+            this.ShopRecheckUserSearchAsync(projectCode, shopCode, null);
+        }
+        
+        /// <remarks/>
+        public void ShopRecheckUserSearchAsync(string projectCode, string shopCode, object userState) {
             if ((this.ShopRecheckUserSearchOperationCompleted == null)) {
                 this.ShopRecheckUserSearchOperationCompleted = new System.Threading.SendOrPostCallback(this.OnShopRecheckUserSearchOperationCompleted);
             }
             this.InvokeAsync("ShopRecheckUserSearch", new object[] {
                         projectCode,
-                        shopCode,
-                        recheckUserId}, this.ShopRecheckUserSearchOperationCompleted, userState);
+                        shopCode}, this.ShopRecheckUserSearchOperationCompleted, userState);
         }
         
         private void OnShopRecheckUserSearchOperationCompleted(object arg) {
@@ -9091,37 +9196,6 @@ namespace XHX.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchShop", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataSet SearchShop(string shopCode, string shopName) {
-            object[] results = this.Invoke("SearchShop", new object[] {
-                        shopCode,
-                        shopName});
-            return ((System.Data.DataSet)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void SearchShopAsync(string shopCode, string shopName) {
-            this.SearchShopAsync(shopCode, shopName, null);
-        }
-        
-        /// <remarks/>
-        public void SearchShopAsync(string shopCode, string shopName, object userState) {
-            if ((this.SearchShopOperationCompleted == null)) {
-                this.SearchShopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchShopOperationCompleted);
-            }
-            this.InvokeAsync("SearchShop", new object[] {
-                        shopCode,
-                        shopName}, this.SearchShopOperationCompleted, userState);
-        }
-        
-        private void OnSearchShopOperationCompleted(object arg) {
-            if ((this.SearchShopCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SearchShopCompleted(this, new SearchShopCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -9141,7 +9215,7 @@ namespace XHX.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9174,7 +9248,7 @@ namespace XHX.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9207,7 +9281,7 @@ namespace XHX.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9217,12 +9291,64 @@ namespace XHX.localhost {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Image))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public abstract partial class MarshalByRefObject {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void SearchShopCompletedEventHandler(object sender, SearchShopCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SearchShopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SearchShopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void SearchShopForRecheckUserCompletedEventHandler(object sender, SearchShopForRecheckUserCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SearchShopForRecheckUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SearchShopForRecheckUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
     }
     
     /// <remarks/>
@@ -13133,6 +13259,32 @@ namespace XHX.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void ShopRecheckUserSearchForPopupCompletedEventHandler(object sender, ShopRecheckUserSearchForPopupCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ShopRecheckUserSearchForPopupCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ShopRecheckUserSearchForPopupCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
     public delegate void ShopRecheckUserSearchCompletedEventHandler(object sender, ShopRecheckUserSearchCompletedEventArgs e);
     
     /// <remarks/>
@@ -13350,32 +13502,6 @@ namespace XHX.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
     public delegate void SaveSaleContantScoreListCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
-    public delegate void SearchShopCompletedEventHandler(object sender, SearchShopCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class SearchShopCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal SearchShopCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public System.Data.DataSet Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((System.Data.DataSet)(this.results[0]));
-            }
-        }
-    }
 }
 
 #pragma warning restore 1591

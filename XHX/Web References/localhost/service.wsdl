@@ -3,6 +3,51 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="SearchShop">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchShopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchShopResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchShopForRecheckUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recheckUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchShopForRecheckUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchShopForRecheckUserResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SaveShop">
         <s:complexType>
           <s:sequence>
@@ -3947,12 +3992,34 @@
       <s:element name="ShopRecheckUserDeleteResponse">
         <s:complexType />
       </s:element>
-      <s:element name="ShopRecheckUserSearch">
+      <s:element name="ShopRecheckUserSearchForPopup">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="recheckUserId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShopRecheckUserSearchForPopupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShopRecheckUserSearchForPopupResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ShopRecheckUserSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -4297,28 +4364,6 @@
       <s:element name="SaveSaleContantScoreListResponse">
         <s:complexType />
       </s:element>
-      <s:element name="SearchShop">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="shopName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SearchShopResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchShopResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:element ref="s:schema" />
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
-          </s:sequence>
-        </s:complexType>
-      </s:element>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="char">
@@ -4326,6 +4371,18 @@
       </s:simpleType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="SearchShopSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchShop" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchShopResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopForRecheckUserSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchShopForRecheckUser" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopForRecheckUserSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchShopForRecheckUserResponse" />
+  </wsdl:message>
   <wsdl:message name="SaveShopSoapIn">
     <wsdl:part name="parameters" element="tns:SaveShop" />
   </wsdl:message>
@@ -5598,6 +5655,12 @@
   <wsdl:message name="ShopRecheckUserDeleteSoapOut">
     <wsdl:part name="parameters" element="tns:ShopRecheckUserDeleteResponse" />
   </wsdl:message>
+  <wsdl:message name="ShopRecheckUserSearchForPopupSoapIn">
+    <wsdl:part name="parameters" element="tns:ShopRecheckUserSearchForPopup" />
+  </wsdl:message>
+  <wsdl:message name="ShopRecheckUserSearchForPopupSoapOut">
+    <wsdl:part name="parameters" element="tns:ShopRecheckUserSearchForPopupResponse" />
+  </wsdl:message>
   <wsdl:message name="ShopRecheckUserSearchSoapIn">
     <wsdl:part name="parameters" element="tns:ShopRecheckUserSearch" />
   </wsdl:message>
@@ -5730,13 +5793,15 @@
   <wsdl:message name="SaveSaleContantScoreListSoapOut">
     <wsdl:part name="parameters" element="tns:SaveSaleContantScoreListResponse" />
   </wsdl:message>
-  <wsdl:message name="SearchShopSoapIn">
-    <wsdl:part name="parameters" element="tns:SearchShop" />
-  </wsdl:message>
-  <wsdl:message name="SearchShopSoapOut">
-    <wsdl:part name="parameters" element="tns:SearchShopResponse" />
-  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="SearchShop">
+      <wsdl:input message="tns:SearchShopSoapIn" />
+      <wsdl:output message="tns:SearchShopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopForRecheckUser">
+      <wsdl:input message="tns:SearchShopForRecheckUserSoapIn" />
+      <wsdl:output message="tns:SearchShopForRecheckUserSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SaveShop">
       <wsdl:input message="tns:SaveShopSoapIn" />
       <wsdl:output message="tns:SaveShopSoapOut" />
@@ -6585,6 +6650,10 @@
       <wsdl:input message="tns:ShopRecheckUserDeleteSoapIn" />
       <wsdl:output message="tns:ShopRecheckUserDeleteSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="ShopRecheckUserSearchForPopup">
+      <wsdl:input message="tns:ShopRecheckUserSearchForPopupSoapIn" />
+      <wsdl:output message="tns:ShopRecheckUserSearchForPopupSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ShopRecheckUserSearch">
       <wsdl:input message="tns:ShopRecheckUserSearchSoapIn" />
       <wsdl:output message="tns:ShopRecheckUserSearchSoapOut" />
@@ -6673,13 +6742,27 @@
       <wsdl:input message="tns:SaveSaleContantScoreListSoapIn" />
       <wsdl:output message="tns:SaveSaleContantScoreListSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SearchShop">
-      <wsdl:input message="tns:SearchShopSoapIn" />
-      <wsdl:output message="tns:SearchShopSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchShop">
+      <soap:operation soapAction="http://tempuri.org/SearchShop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopForRecheckUser">
+      <soap:operation soapAction="http://tempuri.org/SearchShopForRecheckUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveShop">
       <soap:operation soapAction="http://tempuri.org/SaveShop" style="document" />
       <wsdl:input>
@@ -8588,6 +8671,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ShopRecheckUserSearchForPopup">
+      <soap:operation soapAction="http://tempuri.org/ShopRecheckUserSearchForPopup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ShopRecheckUserSearch">
       <soap:operation soapAction="http://tempuri.org/ShopRecheckUserSearch" style="document" />
       <wsdl:input>
@@ -8786,18 +8878,27 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SearchShop">
-      <soap:operation soapAction="http://tempuri.org/SearchShop" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SearchShop">
+      <soap12:operation soapAction="http://tempuri.org/SearchShop" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopForRecheckUser">
+      <soap12:operation soapAction="http://tempuri.org/SearchShopForRecheckUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveShop">
       <soap12:operation soapAction="http://tempuri.org/SaveShop" style="document" />
       <wsdl:input>
@@ -10706,6 +10807,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ShopRecheckUserSearchForPopup">
+      <soap12:operation soapAction="http://tempuri.org/ShopRecheckUserSearchForPopup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ShopRecheckUserSearch">
       <soap12:operation soapAction="http://tempuri.org/ShopRecheckUserSearch" style="document" />
       <wsdl:input>
@@ -10897,15 +11007,6 @@
     </wsdl:operation>
     <wsdl:operation name="SaveSaleContantScoreList">
       <soap12:operation soapAction="http://tempuri.org/SaveSaleContantScoreList" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchShop">
-      <soap12:operation soapAction="http://tempuri.org/SearchShop" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

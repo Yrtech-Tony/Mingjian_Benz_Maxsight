@@ -201,7 +201,7 @@ namespace XHX.View
         /// <param name="e"></param>
         private void btnShopCode_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Shop_Popup pop = new Shop_Popup("", "", false);
+            Shop_Popup pop = new Shop_Popup("", "", false,"",_UserInfoDto.UserID,"");
             pop.ShowDialog();
             ShopDto dto = pop.Shopdto;
             if (dto != null)

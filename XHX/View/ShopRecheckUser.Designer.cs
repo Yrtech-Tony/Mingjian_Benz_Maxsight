@@ -33,9 +33,9 @@ namespace XHX.View
             this.gcShopCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcShopName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcRecheckUserId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cboSubjectTypeExam = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gcRecheckUserName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcInDateTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboSubjectTypeExam = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.grdShop = new DevExpress.XtraEditors.PanelControl();
             this.txtShopName = new DevExpress.XtraEditors.TextEdit();
@@ -90,6 +90,7 @@ namespace XHX.View
             this.gcShopCode.FieldName = "ShopCode";
             this.gcShopCode.Name = "gcShopCode";
             this.gcShopCode.OptionsColumn.AllowFocus = false;
+            this.gcShopCode.OptionsColumn.ReadOnly = true;
             this.gcShopCode.Visible = true;
             this.gcShopCode.VisibleIndex = 0;
             this.gcShopCode.Width = 220;
@@ -102,6 +103,7 @@ namespace XHX.View
             this.gcShopName.FieldName = "ShopName";
             this.gcShopName.Name = "gcShopName";
             this.gcShopName.OptionsColumn.AllowFocus = false;
+            this.gcShopName.OptionsColumn.ReadOnly = true;
             this.gcShopName.Visible = true;
             this.gcShopName.VisibleIndex = 1;
             this.gcShopName.Width = 345;
@@ -119,13 +121,6 @@ namespace XHX.View
             this.gcRecheckUserId.VisibleIndex = 2;
             this.gcRecheckUserId.Width = 162;
             // 
-            // cboSubjectTypeExam
-            // 
-            this.cboSubjectTypeExam.AutoHeight = false;
-            this.cboSubjectTypeExam.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboSubjectTypeExam.Name = "cboSubjectTypeExam";
-            // 
             // gcRecheckUserName
             // 
             this.gcRecheckUserName.AppearanceHeader.Options.UseTextOptions = true;
@@ -133,6 +128,7 @@ namespace XHX.View
             this.gcRecheckUserName.Caption = "审核人员姓名";
             this.gcRecheckUserName.FieldName = "RecheckUserName";
             this.gcRecheckUserName.Name = "gcRecheckUserName";
+            this.gcRecheckUserName.OptionsColumn.ReadOnly = true;
             this.gcRecheckUserName.Visible = true;
             this.gcRecheckUserName.VisibleIndex = 3;
             this.gcRecheckUserName.Width = 100;
@@ -144,9 +140,17 @@ namespace XHX.View
             this.gcInDateTime.Caption = "日期";
             this.gcInDateTime.FieldName = "InDateTime";
             this.gcInDateTime.Name = "gcInDateTime";
+            this.gcInDateTime.OptionsColumn.ReadOnly = true;
             this.gcInDateTime.Visible = true;
             this.gcInDateTime.VisibleIndex = 4;
             this.gcInDateTime.Width = 150;
+            // 
+            // cboSubjectTypeExam
+            // 
+            this.cboSubjectTypeExam.AutoHeight = false;
+            this.cboSubjectTypeExam.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboSubjectTypeExam.Name = "cboSubjectTypeExam";
             // 
             // repositoryItemDateEdit1
             // 

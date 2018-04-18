@@ -43,7 +43,7 @@ namespace XHX.View
             string prjectCode = CommonHandler.GetComboBoxSelectedValue(cboProject).ToString();
             string shopCode = btnShopCode.Text;
             List<ShopRecheckUserDto> list = new List<ShopRecheckUserDto>();
-            DataSet ds = webService.ShopRecheckUserSearch(prjectCode, shopCode,"");
+            DataSet ds = webService.ShopRecheckUserSearch(prjectCode, shopCode);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -52,8 +52,8 @@ namespace XHX.View
                     exam.ProjectCode = Convert.ToString(ds.Tables[0].Rows[i]["ProjectCode"]);
                     exam.ShopCode = Convert.ToString(ds.Tables[0].Rows[i]["ShopCode"]);
                     exam.ShopName = Convert.ToString(ds.Tables[0].Rows[i]["ShopName"]);
-                    exam.RecheckUserId = Convert.ToString(ds.Tables[0].Rows[i]["RecheckUserId "]);
-                    exam.RecheckUserName = Convert.ToString(ds.Tables[0].Rows[i]["InDateTime"]);
+                    exam.RecheckUserId = Convert.ToString(ds.Tables[0].Rows[i]["RecheckUserId"]);
+                    exam.RecheckUserName = Convert.ToString(ds.Tables[0].Rows[i]["RecheckUserName"]);
                     if (ds.Tables[0].Rows[i]["InDateTime"] != DBNull.Value)
                     {
                         exam.InDateTime = Convert.ToDateTime(ds.Tables[0].Rows[i]["InDateTime"]);
@@ -76,7 +76,7 @@ namespace XHX.View
         /// <param name="e"></param>
         private void btnShopCode_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Shop_Popup pop = new Shop_Popup("", "", false);
+            Shop_Popup pop = new Shop_Popup("", "", false, "", UserInfoDto.UserID, "");
             pop.ShowDialog();
             ShopDto dto = pop.Shopdto;
             if (dto != null)

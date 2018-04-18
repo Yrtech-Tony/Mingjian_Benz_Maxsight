@@ -2216,9 +2216,15 @@ public class Service : System.Web.Services.WebService
         CommonHandler.query(sql);
     }
     [WebMethod]
-    public DataSet ShopRecheckUserSearch(string projectCode, string shopCode, string recheckUserId)
+    public DataSet ShopRecheckUserSearchForPopup(string projectCode, string shopCode, string recheckUserId)
     {
-        string sql = string.Format("exec up_DSAT_ShopRecheckUser_S '{0}','{1}','{2}'", projectCode, shopCode, recheckUserId);
+        string sql = string.Format("exec up_DSAT_ShopRecheckUser_R '{0}','{1}','{2}'", projectCode, shopCode, recheckUserId);
+        return CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public DataSet ShopRecheckUserSearch(string projectCode, string shopCode)
+    {
+        string sql = string.Format("exec up_DSAT_ShopRecheckUser_R2 '{0}','{1}'", projectCode, shopCode);
         return CommonHandler.query(sql);
     }
     #endregion
@@ -2470,6 +2476,14 @@ public class Service : System.Web.Services.WebService
     public DataSet SearchShop(string shopCode, string shopName)
     {
         string sql = string.Format("EXEC [up_DSAT_Shop_R] @ShopCode= '{0}',@ShopName = '{1}' ", shopCode, shopName);//cboArea.SelectedItem
+        DataSet ds = CommonHandler.query(sql);
+
+        return ds;
+    }
+    [WebMethod]
+    public DataSet SearchShopForRecheckUser(string projectCode,string shopCode,string recheckUserId)
+    {
+        string sql = string.Format("EXEC [up_DSAT_ShopRecheckUser_R] '{0}','{1}','{2}' ", projectCode,shopCode,recheckUserId);//cboArea.SelectedItem
         DataSet ds = CommonHandler.query(sql);
 
         return ds;

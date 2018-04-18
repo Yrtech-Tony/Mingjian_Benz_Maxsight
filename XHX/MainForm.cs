@@ -150,6 +150,8 @@ namespace XHX
             mainMenu.DropDownItems.Add(subMenu);
             subMenu = new ToolStripMenuItem("单店报告生成_每周", null, new EventHandler(menu_Click)); subMenu.Tag = "SingleShopReport_Week";
             mainMenu.DropDownItems.Add(subMenu);
+            subMenu = new ToolStripMenuItem("复审人员分配", null, new EventHandler(menu_Click)); subMenu.Tag = "ShopRecheckUser";
+            mainMenu.DropDownItems.Add(subMenu);
             subMenu = new ToolStripMenuItem("皮肤");
             foreach (DevExpress.Skins.SkinContainer skin in DevExpress.Skins.SkinManager.Default.Skins)
             {
