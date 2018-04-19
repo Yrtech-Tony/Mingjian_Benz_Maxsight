@@ -2411,6 +2411,7 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public void SaveSaleContantList(List<String> dataList)
     {
+        
         foreach (String data in dataList)
         {
             try
@@ -2421,7 +2422,7 @@ public class Service : System.Web.Services.WebService
                 string seqNO = properties[2];
                 string salesContant = properties[3];
                 string memberType = properties[4];
-
+                CommonHandler.log(projectCode+" "+shopCode+" "+seqNO+" "+salesContant+" "+memberType);
                 string sql = string.Format("EXEC up_DSAT_AnswerScoreDtlSalesConsltant_S '{0}','{1}','{2}','{3}','{4}'", projectCode, shopCode, seqNO, salesContant, memberType);
                 DataSet ds = CommonHandler.query(sql);
             }
@@ -2448,7 +2449,7 @@ public class Service : System.Web.Services.WebService
                 string score = properties[5];
                 string lossDesc = properties[6];
                 string inuserId = properties[7];
-
+                CommonHandler.log(projectCode + " " + subjectCode + " " + shopCode + " " + seqNO + " " + salesContant + " " + score + " " + lossDesc);
                 string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant, lossDesc, inuserId);
                 DataSet ds = CommonHandler.query(sql);
             }
