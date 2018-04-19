@@ -2449,7 +2449,7 @@ public class Service : System.Web.Services.WebService
                 string lossDesc = properties[6];
                 string inuserId = properties[7];
 
-                string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant, lossDesc, inuserId);
+                string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant,score, lossDesc, inuserId);
                 DataSet ds = CommonHandler.query(sql);
             }
             catch (Exception)
