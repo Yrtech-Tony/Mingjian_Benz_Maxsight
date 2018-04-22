@@ -39,7 +39,7 @@
     <PublisherName>北京怡睿科技发展有限公司</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>152</ApplicationRevision>
+    <ApplicationRevision>153</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>false</BootstrapperEnabled>
@@ -236,6 +236,7 @@
     <Compile Include="DTO\ChapterDto.cs" />
     <Compile Include="DTO\CheckOptionsDto.cs" />
     <Compile Include="DTO\AnswerErrorDataDto.cs" />
+    <Compile Include="DTO\ShopRecordDto.cs" />
     <Compile Include="DTO\ShopRecheckUserDto.cs" />
     <Compile Include="DTO\SalesConsultantReportDto.cs" />
     <Compile Include="DTO\InspectionStandardReportDto.cs" />
@@ -560,6 +561,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AnswerErrorData.resx">
       <DependentUpon>AnswerErrorData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ShopRecord.resx">
+      <DependentUpon>ShopRecord.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ShopRecheckUser.resx">
@@ -1126,6 +1131,12 @@
     <Compile Include="View\AnswerErrorData.Designer.cs">
       <DependentUpon>AnswerErrorData.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ShopRecord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ShopRecord.Designer.cs">
+      <DependentUpon>ShopRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ShopRecheckUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1518,6 +1529,15 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="DbAccess">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <FileType>Assembly</FileType>
+    </PublishFile>
     <PublishFile Include="DevExpress.BonusSkins.v9.1">
       <Visible>False</Visible>
       <Group>
@@ -1626,6 +1646,15 @@
       <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="Infragistics3.Excel.v10.2">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <FileType>Assembly</FileType>
+    </PublishFile>
     <PublishFile Include="Interop.DSOFramer">
       <Visible>False</Visible>
       <Group>
@@ -1651,6 +1680,33 @@
       <TargetPath>
       </TargetPath>
       <PublishState>Exclude</PublishState>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Office.Interop.Excel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Vbe.Interop">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="office">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="OfficeControl">

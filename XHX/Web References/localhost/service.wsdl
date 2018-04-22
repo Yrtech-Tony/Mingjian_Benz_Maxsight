@@ -3,6 +3,31 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="SaveSaleContantList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataList" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveSaleContantListResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveSaleContantScoreList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataList" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveSaleContantScoreListResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="SearchShop">
         <s:complexType>
           <s:sequence>
@@ -516,11 +541,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfString">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="SearchScoreRateResponse">
         <s:complexType>
           <s:sequence>
@@ -4249,6 +4269,42 @@
       <s:element name="AsyDataResponse">
         <s:complexType />
       </s:element>
+      <s:element name="SaveShopRecordUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recordUrl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveShopRecordUrlResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchShopRecordUrlList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchShopRecordUrlListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchShopRecordUrlListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetProjectsAndShopInfo">
         <s:complexType />
       </s:element>
@@ -4344,26 +4400,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="SaveSaleContantList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="dataList" type="tns:ArrayOfString" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SaveSaleContantListResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="SaveSaleContantScoreList">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="dataList" type="tns:ArrayOfString" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SaveSaleContantScoreListResponse">
-        <s:complexType />
-      </s:element>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="char">
@@ -4371,6 +4407,18 @@
       </s:simpleType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="SaveSaleContantListSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveSaleContantList" />
+  </wsdl:message>
+  <wsdl:message name="SaveSaleContantListSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveSaleContantListResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveSaleContantScoreListSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveSaleContantScoreList" />
+  </wsdl:message>
+  <wsdl:message name="SaveSaleContantScoreListSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveSaleContantScoreListResponse" />
+  </wsdl:message>
   <wsdl:message name="SearchShopSoapIn">
     <wsdl:part name="parameters" element="tns:SearchShop" />
   </wsdl:message>
@@ -5751,6 +5799,18 @@
   <wsdl:message name="AsyDataSoapOut">
     <wsdl:part name="parameters" element="tns:AsyDataResponse" />
   </wsdl:message>
+  <wsdl:message name="SaveShopRecordUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveShopRecordUrl" />
+  </wsdl:message>
+  <wsdl:message name="SaveShopRecordUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveShopRecordUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopRecordUrlListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchShopRecordUrlList" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopRecordUrlListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchShopRecordUrlListResponse" />
+  </wsdl:message>
   <wsdl:message name="GetProjectsAndShopInfoSoapIn">
     <wsdl:part name="parameters" element="tns:GetProjectsAndShopInfo" />
   </wsdl:message>
@@ -5781,19 +5841,15 @@
   <wsdl:message name="SearchAnswerScoreDtlSalesConsltantByShopCodeSoapOut">
     <wsdl:part name="parameters" element="tns:SearchAnswerScoreDtlSalesConsltantByShopCodeResponse" />
   </wsdl:message>
-  <wsdl:message name="SaveSaleContantListSoapIn">
-    <wsdl:part name="parameters" element="tns:SaveSaleContantList" />
-  </wsdl:message>
-  <wsdl:message name="SaveSaleContantListSoapOut">
-    <wsdl:part name="parameters" element="tns:SaveSaleContantListResponse" />
-  </wsdl:message>
-  <wsdl:message name="SaveSaleContantScoreListSoapIn">
-    <wsdl:part name="parameters" element="tns:SaveSaleContantScoreList" />
-  </wsdl:message>
-  <wsdl:message name="SaveSaleContantScoreListSoapOut">
-    <wsdl:part name="parameters" element="tns:SaveSaleContantScoreListResponse" />
-  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="SaveSaleContantList">
+      <wsdl:input message="tns:SaveSaleContantListSoapIn" />
+      <wsdl:output message="tns:SaveSaleContantListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSaleContantScoreList">
+      <wsdl:input message="tns:SaveSaleContantScoreListSoapIn" />
+      <wsdl:output message="tns:SaveSaleContantScoreListSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SearchShop">
       <wsdl:input message="tns:SearchShopSoapIn" />
       <wsdl:output message="tns:SearchShopSoapOut" />
@@ -6714,6 +6770,14 @@
       <wsdl:input message="tns:AsyDataSoapIn" />
       <wsdl:output message="tns:AsyDataSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SaveShopRecordUrl">
+      <wsdl:input message="tns:SaveShopRecordUrlSoapIn" />
+      <wsdl:output message="tns:SaveShopRecordUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopRecordUrlList">
+      <wsdl:input message="tns:SearchShopRecordUrlListSoapIn" />
+      <wsdl:output message="tns:SearchShopRecordUrlListSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetProjectsAndShopInfo">
       <wsdl:input message="tns:GetProjectsAndShopInfoSoapIn" />
       <wsdl:output message="tns:GetProjectsAndShopInfoSoapOut" />
@@ -6734,17 +6798,27 @@
       <wsdl:input message="tns:SearchAnswerScoreDtlSalesConsltantByShopCodeSoapIn" />
       <wsdl:output message="tns:SearchAnswerScoreDtlSalesConsltantByShopCodeSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="SaveSaleContantList">
-      <wsdl:input message="tns:SaveSaleContantListSoapIn" />
-      <wsdl:output message="tns:SaveSaleContantListSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SaveSaleContantScoreList">
-      <wsdl:input message="tns:SaveSaleContantScoreListSoapIn" />
-      <wsdl:output message="tns:SaveSaleContantScoreListSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveSaleContantList">
+      <soap:operation soapAction="http://tempuri.org/SaveSaleContantList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSaleContantScoreList">
+      <soap:operation soapAction="http://tempuri.org/SaveSaleContantScoreList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchShop">
       <soap:operation soapAction="http://tempuri.org/SearchShop" style="document" />
       <wsdl:input>
@@ -8815,6 +8889,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveShopRecordUrl">
+      <soap:operation soapAction="http://tempuri.org/SaveShopRecordUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopRecordUrlList">
+      <soap:operation soapAction="http://tempuri.org/SearchShopRecordUrlList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProjectsAndShopInfo">
       <soap:operation soapAction="http://tempuri.org/GetProjectsAndShopInfo" style="document" />
       <wsdl:input>
@@ -8860,27 +8952,27 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SaveSaleContantList">
-      <soap:operation soapAction="http://tempuri.org/SaveSaleContantList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveSaleContantScoreList">
-      <soap:operation soapAction="http://tempuri.org/SaveSaleContantScoreList" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveSaleContantList">
+      <soap12:operation soapAction="http://tempuri.org/SaveSaleContantList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSaleContantScoreList">
+      <soap12:operation soapAction="http://tempuri.org/SaveSaleContantScoreList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchShop">
       <soap12:operation soapAction="http://tempuri.org/SearchShop" style="document" />
       <wsdl:input>
@@ -10951,6 +11043,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveShopRecordUrl">
+      <soap12:operation soapAction="http://tempuri.org/SaveShopRecordUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopRecordUrlList">
+      <soap12:operation soapAction="http://tempuri.org/SearchShopRecordUrlList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetProjectsAndShopInfo">
       <soap12:operation soapAction="http://tempuri.org/GetProjectsAndShopInfo" style="document" />
       <wsdl:input>
@@ -10989,24 +11099,6 @@
     </wsdl:operation>
     <wsdl:operation name="SearchAnswerScoreDtlSalesConsltantByShopCode">
       <soap12:operation soapAction="http://tempuri.org/SearchAnswerScoreDtlSalesConsltantByShopCode" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveSaleContantList">
-      <soap12:operation soapAction="http://tempuri.org/SaveSaleContantList" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SaveSaleContantScoreList">
-      <soap12:operation soapAction="http://tempuri.org/SaveSaleContantScoreList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

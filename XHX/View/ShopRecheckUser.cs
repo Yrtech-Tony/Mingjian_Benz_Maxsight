@@ -16,7 +16,6 @@ namespace XHX.View
     {
         #region Field
         XtraGridDataHandler<ShopRecheckUserDto> dataHandler = null;
-        List<ShopSubjectExamTypeDto> listDto = new List<ShopSubjectExamTypeDto>();
         localhost.Service webService = new localhost.Service();
         MSExcelUtil msExcelUtil = new MSExcelUtil();
         //LocalService webService = new LocalService();
