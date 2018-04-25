@@ -27,6 +27,11 @@ namespace XHX.View
         }
         public void Search()
         {
+            if (UserInfoDto.RoleType == "R" && string.IsNullOrEmpty(btnShopCode.Text))
+            {
+                CommonHandler.ShowMessage(MessageType.Information, "请选择经销商");
+                return;
+            }
             grcShopScore.DataSource = null;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProject).ToString();
             string shopCode = btnShopCode.Text;
@@ -119,7 +124,7 @@ namespace XHX.View
         }
         private void btnShopCode_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Shop_Popup pop = new Shop_Popup("", "", false,"",UserInfoDto.UserID,"");
+            Shop_Popup pop = new Shop_Popup("", "", false,CommonHandler.GetComboBoxSelectedValue(cboProject).ToString(),UserInfoDto,"RecheckUser");
             pop.ShowDialog();
             ShopDto dto = pop.Shopdto;
             if (dto != null)

@@ -100,7 +100,7 @@ namespace XHX.View
 
         private void btnShop_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Shop_Popup shop = new Shop_Popup("", "", true, "", UserInfoDto.UserID, "");
+            Shop_Popup shop = new Shop_Popup("", "", true, "", UserInfoDto, "");
             shop.ShowDialog();
 
             string shopName = string.Empty;
