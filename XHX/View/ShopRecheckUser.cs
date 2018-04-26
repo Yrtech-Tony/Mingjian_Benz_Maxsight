@@ -16,7 +16,6 @@ namespace XHX.View
     {
         #region Field
         XtraGridDataHandler<ShopRecheckUserDto> dataHandler = null;
-        List<ShopSubjectExamTypeDto> listDto = new List<ShopSubjectExamTypeDto>();
         localhost.Service webService = new localhost.Service();
         MSExcelUtil msExcelUtil = new MSExcelUtil();
         //LocalService webService = new LocalService();
@@ -76,7 +75,7 @@ namespace XHX.View
         /// <param name="e"></param>
         private void btnShopCode_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Shop_Popup pop = new Shop_Popup("", "", false, "", UserInfoDto.UserID, "");
+            Shop_Popup pop = new Shop_Popup("", "", false, "", UserInfoDto, "");
             pop.ShowDialog();
             ShopDto dto = pop.Shopdto;
             if (dto != null)

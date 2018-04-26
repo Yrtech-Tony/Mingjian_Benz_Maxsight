@@ -37,22 +37,22 @@ namespace XHX.View
             }
         }
         public string _projectCode;
-        public string _userId;
+        public UserInfoDto _userInfo;
         public string _type;
         public Shop_Popup()
         {
 
         }
-        public Shop_Popup(string shopCode, string shopName, bool check,string projectCode,string userId,string type)
+        public Shop_Popup(string shopCode, string shopName, bool check,string projectCode,UserInfoDto userInfo,string type)
         {
             InitializeComponent();
             this.LookAndFeel.SetSkinStyle(CommonHandler.Skin_Name);
             _projectCode = projectCode;
-            _userId = userId;
+            _userInfo = userInfo;
             _type = type;
             OnLoadView();
             //CommonHandler.SetComboBoxSelectedValue(cboArea, areaCode);
-            Search(shopCode, shopName, projectCode, userId, type);
+            Search(shopCode, shopName, projectCode, _userInfo, type);
             if (check)
             {
                 selection = new GridCheckMarksSelection(gridView1);
@@ -70,12 +70,12 @@ namespace XHX.View
             // CommonHandler.BindComboBoxItems<AreaDto>(cboAreaCode, BindComBox.GetAllArea(), "AreaName", "AreaCode");
             //cboArea.Enabled = false;
         }
-        private void Search(string shopCode, string shopName,string projectCode,string userid,string type)
+        private void Search(string shopCode, string shopName,string projectCode,UserInfoDto userinfo,string type)
         {
             DataSet ds = new DataSet();
-            if (type == "RecheckUser")//复审界面选择经销商
+            if (type == "RecheckUser"&&userinfo.RoleType=="R")//复审界面选择经销商,如果是复审人员的话，按照复审设置查询经销商
             {
-                ds = webService.SearchShopForRecheckUser(projectCode,shopCode,userid);
+                ds = webService.SearchShopForRecheckUser(projectCode,shopCode,userinfo.UserID);
             }
             else
             {
@@ -106,7 +106,7 @@ namespace XHX.View
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Search(txtShopCode.Text, txtShop.Text,_projectCode,_userId,_type);
+            Search(txtShopCode.Text, txtShop.Text,_projectCode,_userInfo,_type);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

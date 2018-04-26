@@ -161,7 +161,7 @@ namespace XHX.View
 
         private void btnShopCode_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            Shop_Popup pop = new Shop_Popup("", "", false, "", UserInfoDto.UserID, "");
+            Shop_Popup pop = new Shop_Popup("", "", false, "", UserInfoDto, "");
             pop.ShowDialog();
             ShopDto dto = pop.Shopdto;
             if (dto != null)
@@ -932,7 +932,7 @@ namespace XHX.View
             char checkType = '0';
 
             DataSet ds1 = service.SearchSubjectBySubjectCode(ProjectCode_Golbal,SubjectCode_Golbal);
-            if (ds1.Tables[0].Rows.Count == 0)
+            if (ds1.Tables[0].Rows.Count != 0)
             {
                 if (SubjectTypeCode == "SA")
                 {

@@ -32,6 +32,10 @@ namespace XHX.localhost {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PictureDto[]))]
     public partial class Service : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
+        private System.Threading.SendOrPostCallback SaveSaleContantListOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SaveSaleContantScoreListOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SearchShopOperationCompleted;
         
         private System.Threading.SendOrPostCallback SearchShopForRecheckUserOperationCompleted;
@@ -492,6 +496,10 @@ namespace XHX.localhost {
         
         private System.Threading.SendOrPostCallback AsyDataOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SaveShopRecordUrlOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SearchShopRecordUrlListOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetProjectsAndShopInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetSubjectAndAnswerInfoOperationCompleted;
@@ -501,10 +509,6 @@ namespace XHX.localhost {
         private System.Threading.SendOrPostCallback SearchAnswerScoreDtlByShopCodeOperationCompleted;
         
         private System.Threading.SendOrPostCallback SearchAnswerScoreDtlSalesConsltantByShopCodeOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SaveSaleContantListOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback SaveSaleContantScoreListOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -543,6 +547,12 @@ namespace XHX.localhost {
                 this.useDefaultCredentialsSetExplicitly = true;
             }
         }
+        
+        /// <remarks/>
+        public event SaveSaleContantListCompletedEventHandler SaveSaleContantListCompleted;
+        
+        /// <remarks/>
+        public event SaveSaleContantScoreListCompletedEventHandler SaveSaleContantScoreListCompleted;
         
         /// <remarks/>
         public event SearchShopCompletedEventHandler SearchShopCompleted;
@@ -1235,6 +1245,12 @@ namespace XHX.localhost {
         public event AsyDataCompletedEventHandler AsyDataCompleted;
         
         /// <remarks/>
+        public event SaveShopRecordUrlCompletedEventHandler SaveShopRecordUrlCompleted;
+        
+        /// <remarks/>
+        public event SearchShopRecordUrlListCompletedEventHandler SearchShopRecordUrlListCompleted;
+        
+        /// <remarks/>
         public event GetProjectsAndShopInfoCompletedEventHandler GetProjectsAndShopInfoCompleted;
         
         /// <remarks/>
@@ -1250,10 +1266,60 @@ namespace XHX.localhost {
         public event SearchAnswerScoreDtlSalesConsltantByShopCodeCompletedEventHandler SearchAnswerScoreDtlSalesConsltantByShopCodeCompleted;
         
         /// <remarks/>
-        public event SaveSaleContantListCompletedEventHandler SaveSaleContantListCompleted;
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveSaleContantList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SaveSaleContantList(string[] dataList) {
+            this.Invoke("SaveSaleContantList", new object[] {
+                        dataList});
+        }
         
         /// <remarks/>
-        public event SaveSaleContantScoreListCompletedEventHandler SaveSaleContantScoreListCompleted;
+        public void SaveSaleContantListAsync(string[] dataList) {
+            this.SaveSaleContantListAsync(dataList, null);
+        }
+        
+        /// <remarks/>
+        public void SaveSaleContantListAsync(string[] dataList, object userState) {
+            if ((this.SaveSaleContantListOperationCompleted == null)) {
+                this.SaveSaleContantListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveSaleContantListOperationCompleted);
+            }
+            this.InvokeAsync("SaveSaleContantList", new object[] {
+                        dataList}, this.SaveSaleContantListOperationCompleted, userState);
+        }
+        
+        private void OnSaveSaleContantListOperationCompleted(object arg) {
+            if ((this.SaveSaleContantListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveSaleContantListCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveSaleContantScoreList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SaveSaleContantScoreList(string[] dataList) {
+            this.Invoke("SaveSaleContantScoreList", new object[] {
+                        dataList});
+        }
+        
+        /// <remarks/>
+        public void SaveSaleContantScoreListAsync(string[] dataList) {
+            this.SaveSaleContantScoreListAsync(dataList, null);
+        }
+        
+        /// <remarks/>
+        public void SaveSaleContantScoreListAsync(string[] dataList, object userState) {
+            if ((this.SaveSaleContantScoreListOperationCompleted == null)) {
+                this.SaveSaleContantScoreListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveSaleContantScoreListOperationCompleted);
+            }
+            this.InvokeAsync("SaveSaleContantScoreList", new object[] {
+                        dataList}, this.SaveSaleContantScoreListOperationCompleted, userState);
+        }
+        
+        private void OnSaveSaleContantScoreListOperationCompleted(object arg) {
+            if ((this.SaveSaleContantScoreListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveSaleContantScoreListCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchShop", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -8979,6 +9045,73 @@ namespace XHX.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveShopRecordUrl", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void SaveShopRecordUrl(string projectCode, string shopCode, string recordUrl, string password, string userId) {
+            this.Invoke("SaveShopRecordUrl", new object[] {
+                        projectCode,
+                        shopCode,
+                        recordUrl,
+                        password,
+                        userId});
+        }
+        
+        /// <remarks/>
+        public void SaveShopRecordUrlAsync(string projectCode, string shopCode, string recordUrl, string password, string userId) {
+            this.SaveShopRecordUrlAsync(projectCode, shopCode, recordUrl, password, userId, null);
+        }
+        
+        /// <remarks/>
+        public void SaveShopRecordUrlAsync(string projectCode, string shopCode, string recordUrl, string password, string userId, object userState) {
+            if ((this.SaveShopRecordUrlOperationCompleted == null)) {
+                this.SaveShopRecordUrlOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveShopRecordUrlOperationCompleted);
+            }
+            this.InvokeAsync("SaveShopRecordUrl", new object[] {
+                        projectCode,
+                        shopCode,
+                        recordUrl,
+                        password,
+                        userId}, this.SaveShopRecordUrlOperationCompleted, userState);
+        }
+        
+        private void OnSaveShopRecordUrlOperationCompleted(object arg) {
+            if ((this.SaveShopRecordUrlCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SaveShopRecordUrlCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SearchShopRecordUrlList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet SearchShopRecordUrlList(string projectCode, string shopCode) {
+            object[] results = this.Invoke("SearchShopRecordUrlList", new object[] {
+                        projectCode,
+                        shopCode});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SearchShopRecordUrlListAsync(string projectCode, string shopCode) {
+            this.SearchShopRecordUrlListAsync(projectCode, shopCode, null);
+        }
+        
+        /// <remarks/>
+        public void SearchShopRecordUrlListAsync(string projectCode, string shopCode, object userState) {
+            if ((this.SearchShopRecordUrlListOperationCompleted == null)) {
+                this.SearchShopRecordUrlListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSearchShopRecordUrlListOperationCompleted);
+            }
+            this.InvokeAsync("SearchShopRecordUrlList", new object[] {
+                        projectCode,
+                        shopCode}, this.SearchShopRecordUrlListOperationCompleted, userState);
+        }
+        
+        private void OnSearchShopRecordUrlListOperationCompleted(object arg) {
+            if ((this.SearchShopRecordUrlListCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SearchShopRecordUrlListCompleted(this, new SearchShopRecordUrlListCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetProjectsAndShopInfo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("DataSet")]
         public System.Data.DataSet[] GetProjectsAndShopInfo() {
@@ -9140,62 +9273,6 @@ namespace XHX.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveSaleContantList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SaveSaleContantList(string[] dataList) {
-            this.Invoke("SaveSaleContantList", new object[] {
-                        dataList});
-        }
-        
-        /// <remarks/>
-        public void SaveSaleContantListAsync(string[] dataList) {
-            this.SaveSaleContantListAsync(dataList, null);
-        }
-        
-        /// <remarks/>
-        public void SaveSaleContantListAsync(string[] dataList, object userState) {
-            if ((this.SaveSaleContantListOperationCompleted == null)) {
-                this.SaveSaleContantListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveSaleContantListOperationCompleted);
-            }
-            this.InvokeAsync("SaveSaleContantList", new object[] {
-                        dataList}, this.SaveSaleContantListOperationCompleted, userState);
-        }
-        
-        private void OnSaveSaleContantListOperationCompleted(object arg) {
-            if ((this.SaveSaleContantListCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SaveSaleContantListCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveSaleContantScoreList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SaveSaleContantScoreList(string[] dataList) {
-            this.Invoke("SaveSaleContantScoreList", new object[] {
-                        dataList});
-        }
-        
-        /// <remarks/>
-        public void SaveSaleContantScoreListAsync(string[] dataList) {
-            this.SaveSaleContantScoreListAsync(dataList, null);
-        }
-        
-        /// <remarks/>
-        public void SaveSaleContantScoreListAsync(string[] dataList, object userState) {
-            if ((this.SaveSaleContantScoreListOperationCompleted == null)) {
-                this.SaveSaleContantScoreListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveSaleContantScoreListOperationCompleted);
-            }
-            this.InvokeAsync("SaveSaleContantScoreList", new object[] {
-                        dataList}, this.SaveSaleContantScoreListOperationCompleted, userState);
-        }
-        
-        private void OnSaveSaleContantScoreListOperationCompleted(object arg) {
-            if ((this.SaveSaleContantScoreListCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.SaveSaleContantScoreListCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -9215,7 +9292,7 @@ namespace XHX.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9248,7 +9325,7 @@ namespace XHX.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9281,7 +9358,7 @@ namespace XHX.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -9291,13 +9368,21 @@ namespace XHX.localhost {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Image))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8827")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.8825")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public abstract partial class MarshalByRefObject {
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void SaveSaleContantListCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void SaveSaleContantScoreListCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
@@ -13367,6 +13452,36 @@ namespace XHX.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void SaveShopRecordUrlCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    public delegate void SearchShopRecordUrlListCompletedEventHandler(object sender, SearchShopRecordUrlListCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SearchShopRecordUrlListCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SearchShopRecordUrlListCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
     public delegate void GetProjectsAndShopInfoCompletedEventHandler(object sender, GetProjectsAndShopInfoCompletedEventArgs e);
     
     /// <remarks/>
@@ -13494,14 +13609,6 @@ namespace XHX.localhost {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
-    public delegate void SaveSaleContantListCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.8825")]
-    public delegate void SaveSaleContantScoreListCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

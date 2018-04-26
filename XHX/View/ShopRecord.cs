@@ -12,18 +12,18 @@ using Microsoft.Office.Interop.Excel;
 
 namespace XHX.View
 {
-    public partial class ShopSubjectType: BaseForm
+    public partial class ShopRecord: BaseForm
     {
         #region Field
-        XtraGridDataHandler<ShopSubjectExamTypeDto> dataHandler = null;
-        List<ShopSubjectExamTypeDto> listDto = new List<ShopSubjectExamTypeDto>();
+        XtraGridDataHandler<ShopRecordDto> dataHandler = null;
         localhost.Service webService = new localhost.Service();
         MSExcelUtil msExcelUtil = new MSExcelUtil();
         //LocalService webService = new LocalService();
         #endregion
-        public ShopSubjectType()
+        public ShopRecord()
         {
             InitializeComponent();
+            webService.Url = "http://47.93.118.1/BenzReportServer/service.asmx";
             OnLoadView();
         }
         #region Private Method
@@ -32,58 +32,41 @@ namespace XHX.View
         /// </summary>
         private void OnLoadView()
         {
-            grcShop.DataSource = new List<ShopSubjectExamTypeDto>();
-            dataHandler = new XtraGridDataHandler<ShopSubjectExamTypeDto>(grvShop);
+            grcShop.DataSource = new List<ShopRecordDto>();
+            dataHandler = new XtraGridDataHandler<ShopRecordDto>(grvShop);
+            CommonHandler.SetRowNumberIndicator(grvShop);
 
             //bind 项目
             XHX.Common.BindComBox.BindProject(cboProject);
-
-            // bind A/B 卷
-            List<ExamTypeDto> list = new List<ExamTypeDto>();
-            ExamTypeDto examType1 = new ExamTypeDto();
-            examType1.ExamTypeCode = "A";
-            examType1.ExamTypeName = "A卷";
-            list.Add(examType1);
-            ExamTypeDto examType2 = new ExamTypeDto();
-            examType2.ExamTypeCode = "B";
-            examType2.ExamTypeName = "B卷";
-            list.Add(examType2);
-            ExamTypeDto examType3 = new ExamTypeDto();
-            examType3.ExamTypeCode = "C";
-            examType3.ExamTypeName = "普通";
-            list.Add(examType3);
-
-            CommonHandler.BindComboBoxItems<ExamTypeDto>(cboSubjectTypeExam, list, "ExamTypeName", "ExamTypeCode");
         }
         private void SearchResult()
         {
             string prjectCode = CommonHandler.GetComboBoxSelectedValue(cboProject).ToString();
             string shopCode = btnShopCode.Text;
-            List<ShopSubjectExamTypeDto> list = new List<ShopSubjectExamTypeDto>();
-            DataSet ds = webService.GetShopSubjectExamTypeList(prjectCode, shopCode);
+            List<ShopRecordDto> list = new List<ShopRecordDto>();
+            DataSet ds = webService.SearchShopRecordUrlList(prjectCode, shopCode);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
-                    ShopSubjectExamTypeDto exam = new ShopSubjectExamTypeDto();
+                    ShopRecordDto exam = new ShopRecordDto();
                     exam.ProjectCode = Convert.ToString(ds.Tables[0].Rows[i]["ProjectCode"]);
                     exam.ShopCode = Convert.ToString(ds.Tables[0].Rows[i]["ShopCode"]);
                     exam.ShopName = Convert.ToString(ds.Tables[0].Rows[i]["ShopName"]);
-                    exam.ExamTypeCode = Convert.ToString(ds.Tables[0].Rows[i]["SubjectTypeCodeExam"]);
-                    exam.CheckUserId = Convert.ToString(ds.Tables[0].Rows[i]["CheckUserId"]);
-                    if (ds.Tables[0].Rows[i]["CheckDate"] != DBNull.Value)
+                    exam.RecordUrl = Convert.ToString(ds.Tables[0].Rows[i]["RecordUrl"]);
+                    exam.Password = Convert.ToString(ds.Tables[0].Rows[i]["Password"]);
+                    if (ds.Tables[0].Rows[i]["InDateTime"] != DBNull.Value)
                     {
-                        exam.CheckDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["CheckDate"]);
+                        exam.InDateTime = Convert.ToDateTime(ds.Tables[0].Rows[i]["InDateTime"]);
                     }
                     else
                     {
-                        exam.CheckDate = null;
+                        exam.InDateTime = null;
                     }
                     list.Add(exam);
                 }
             }
             grcShop.DataSource = list;
-            listDto = list;
         }
         #endregion
         #region Event
@@ -117,9 +100,9 @@ namespace XHX.View
                 grvShop.CloseEditor();
                 if (dataHandler.DataList.Count > 0)
                 {
-                    foreach (ShopSubjectExamTypeDto shop in dataHandler.DataList)
+                    foreach (ShopRecordDto shop in dataHandler.DataList)
                     {
-                        webService.SaveShopExamType(CommonHandler.GetComboBoxSelectedValue(cboProject).ToString(), shop.ShopCode, shop.ExamTypeCode, shop.CheckUserId,shop.CheckDate);
+                        webService.SaveShopRecordUrl(CommonHandler.GetComboBoxSelectedValue(cboProject).ToString(), shop.ShopCode,shop.RecordUrl,shop.Password, UserInfoDto.UserID);
                     }
                 }
                 CommonHandler.ShowMessage(MessageType.Information, "保存完毕");
@@ -135,7 +118,7 @@ namespace XHX.View
             List<ButtonType> list = new List<ButtonType>();
             list.Add(ButtonType.InitButton);
             list.Add(ButtonType.SearchButton);
-            list.Add(ButtonType.SaveButton);
+           // list.Add(ButtonType.SaveButton);
             list.Add(ButtonType.ExcelDownButton);
             return list;
         }
@@ -161,34 +144,25 @@ namespace XHX.View
             }
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void btnCharterSale_Click(object sender, EventArgs e)
         {
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
-            Worksheet worksheet_FengMian = workbook.Worksheets["AB"] as Worksheet;
-            for (int i = 2; i < 500; i++)
+            Worksheet worksheet_FengMian = workbook.Worksheets["录音地址"] as Worksheet;
+            string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProject).ToString();
+            for (int i = 2; i < 10000; i++)
             {
-                try
+                string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, 1, i).ToString();
+                if (string.IsNullOrEmpty(shopCode)) break;
+                if (!string.IsNullOrEmpty(shopCode))
                 {
-                    string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, "B", i);
-                    string projectCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i);
-                    if (!string.IsNullOrEmpty(shopCode) && !string.IsNullOrEmpty(projectCode))
-                    {
-                        string type = msExcelUtil.GetCellValue(worksheet_FengMian, "C", i);
-                        string checkUser = msExcelUtil.GetCellValue(worksheet_FengMian, "D", i);
-                        //DateTime? checkDate = Convert.ToDateTime(msExcelUtil.GetCellValue(worksheet_FengMian, "E", i));
-
-                        webService.SaveShopExamType(projectCode, shopCode, type, checkUser, DateTime.Now);
-                    }
+                    string url =  msExcelUtil.GetCellValue(worksheet_FengMian, 2, i).ToString();
+                    string password = msExcelUtil.GetCellValue(worksheet_FengMian, 3, i).ToString();
+                    webService.SaveShopRecordUrl(projectCode, shopCode, url, password, UserInfoDto.UserID);
                 }
-                catch (Exception ex)
-                {
-                    CommonHandler.ShowMessage(MessageType.Information, "第"+i.ToString() + "行数据格式错误");
-                    continue;
-                }
-                
             }
-            CommonHandler.ShowMessage(MessageType.Information, "上传完毕");
             SearchResult();
+            CommonHandler.ShowMessage(MessageType.Information, "上传完毕");
         }
+
     }
 }

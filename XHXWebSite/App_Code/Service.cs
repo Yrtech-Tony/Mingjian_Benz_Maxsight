@@ -2354,6 +2354,28 @@ public class Service : System.Web.Services.WebService
     }
     #endregion
     #endregion
+    #region 经销商录音管理
+    #region 经销商录音设置
+    [WebMethod]
+    public void SaveShopRecordUrl(string projectCode, string shopCode, string recordUrl, string password, string userId)
+    {
+        string sql = string.Format("EXEC ShopRecord_S '{0}','{1}','{2}','{3}','{4}'",
+                                   projectCode, shopCode, recordUrl, password, userId);
+        CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public DataSet SearchShopRecordUrlList(string projectCode, string shopCode)
+    {
+        string sql = string.Format("EXEC up_DSAT_ShopRecord_R '{0}','{1}'",
+                                   projectCode, shopCode);
+        return CommonHandler.query(sql);
+    }
+    #endregion
+    #region 经销商录音下载
+
+    #endregion
+
+    #endregion
     #endregion
     #region 打分网页版
 
@@ -2411,6 +2433,7 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public void SaveSaleContantList(List<String> dataList)
     {
+        
         foreach (String data in dataList)
         {
             try
@@ -2421,7 +2444,7 @@ public class Service : System.Web.Services.WebService
                 string seqNO = properties[2];
                 string salesContant = properties[3];
                 string memberType = properties[4];
-
+               // CommonHandler.log(projectCode+" "+shopCode+" "+seqNO+" "+salesContant+" "+memberType);
                 string sql = string.Format("EXEC up_DSAT_AnswerScoreDtlSalesConsltant_S '{0}','{1}','{2}','{3}','{4}'", projectCode, shopCode, seqNO, salesContant, memberType);
                 DataSet ds = CommonHandler.query(sql);
             }
@@ -2448,7 +2471,7 @@ public class Service : System.Web.Services.WebService
                 string score = properties[5];
                 string lossDesc = properties[6];
                 string inuserId = properties[7];
-
+                //CommonHandler.log(projectCode + " " + subjectCode + " " + shopCode + " " + seqNO + " " + salesContant + " " + score + " " + lossDesc);
                 string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant,score, lossDesc, inuserId);
                 DataSet ds = CommonHandler.query(sql);
             }
