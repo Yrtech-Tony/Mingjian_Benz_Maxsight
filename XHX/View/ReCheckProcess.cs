@@ -253,7 +253,7 @@ namespace XHX.View
         private void btnSecondRecheckFinish_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
 
-            if (this.UserInfoDto.RoleType == "S")
+            if (this.UserInfoDto.RoleType == "S" || this.UserInfoDto.RoleType == "R" || this.UserInfoDto.RoleType == "L")
             {
                 if (CommonHandler.ShowMessage(MessageType.Confirm, "确定要二审完毕么？") == DialogResult.Yes)
                 {
@@ -266,7 +266,7 @@ namespace XHX.View
 
         private void btnThirdRecheckFinish_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (this.UserInfoDto.RoleType == "S")
+            if (this.UserInfoDto.RoleType == "S" || this.UserInfoDto.RoleType == "R" || this.UserInfoDto.RoleType == "L")
             {
                 if (CommonHandler.ShowMessage(MessageType.Confirm, "确定要三审完毕么？") == DialogResult.Yes)
                 {

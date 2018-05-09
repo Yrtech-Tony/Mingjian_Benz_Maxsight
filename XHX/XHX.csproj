@@ -236,7 +236,6 @@
     <Compile Include="DTO\ChapterDto.cs" />
     <Compile Include="DTO\CheckOptionsDto.cs" />
     <Compile Include="DTO\AnswerErrorDataDto.cs" />
-    <Compile Include="DTO\ShopRecordDto.cs" />
     <Compile Include="DTO\ShopRecheckUserDto.cs" />
     <Compile Include="DTO\SalesConsultantReportDto.cs" />
     <Compile Include="DTO\InspectionStandardReportDto.cs" />
@@ -270,6 +269,7 @@
     <Compile Include="DTO\ScoreSetDto.cs" />
     <Compile Include="DTO\ScoreWeigthRateDto.cs" />
     <Compile Include="DTO\SearchColumnDto.cs" />
+    <Compile Include="DTO\ShopRecordDto.cs" />
     <Compile Include="DTO\ShopScoreInfoDto.cs" />
     <Compile Include="DTO\ShopSubjectExamTypeDto.cs" />
     <Compile Include="DTO\ShopSubjectScoreDto.cs" />
