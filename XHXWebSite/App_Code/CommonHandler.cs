@@ -58,7 +58,7 @@ public class CommonHandler
         using (OleDbConnection conn = new OleDbConnection(ConnectionString))
         {
             OleDbCommand com = new OleDbCommand(sql, conn);
-            com.CommandTimeout = 300;
+            com.CommandTimeout = 600;
             using (OleDbDataAdapter da = new OleDbDataAdapter(com))
             {
                 try
