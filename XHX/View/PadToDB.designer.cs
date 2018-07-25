@@ -42,6 +42,8 @@ namespace XHX.View
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.btnDownloadData = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.pbrProgressForUpload = new System.Windows.Forms.ProgressBar();
@@ -56,8 +58,6 @@ namespace XHX.View
             this.cboProjects = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnShopCode = new DevExpress.XtraEditors.ButtonEdit();
             this.txtShopName = new DevExpress.XtraEditors.TextEdit();
-            this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -68,12 +68,12 @@ namespace XHX.View
             ((System.ComponentModel.ISupportInitialize)(this.tbnSQLitePath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDataPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboExamType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboProjects.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShopCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShopName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -232,9 +232,30 @@ namespace XHX.View
             this.groupControl1.TabIndex = 90;
             this.groupControl1.Text = "向服务器上传[数据和图片](将writeable.db中的数据上传到服务器)";
             // 
+            // buttonEdit1
+            // 
+            this.buttonEdit1.EditValue = "";
+            this.buttonEdit1.Location = new System.Drawing.Point(83, 139);
+            this.buttonEdit1.Name = "buttonEdit1";
+            this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.buttonEdit1.Size = new System.Drawing.Size(493, 21);
+            this.buttonEdit1.TabIndex = 94;
+            this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Options.UseTextOptions = true;
+            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.labelControl10.Location = new System.Drawing.Point(5, 142);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(72, 14);
+            this.labelControl10.TabIndex = 95;
+            this.labelControl10.Text = "销售顾问路径";
+            // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(582, 142);
+            this.simpleButton2.Location = new System.Drawing.Point(582, 136);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(115, 28);
             this.simpleButton2.TabIndex = 93;
@@ -369,27 +390,6 @@ namespace XHX.View
             this.txtShopName.Size = new System.Drawing.Size(238, 21);
             this.txtShopName.TabIndex = 8;
             // 
-            // buttonEdit1
-            // 
-            this.buttonEdit1.EditValue = "";
-            this.buttonEdit1.Location = new System.Drawing.Point(83, 139);
-            this.buttonEdit1.Name = "buttonEdit1";
-            this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit1.Size = new System.Drawing.Size(493, 21);
-            this.buttonEdit1.TabIndex = 94;
-            this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Options.UseTextOptions = true;
-            this.labelControl10.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.labelControl10.Location = new System.Drawing.Point(5, 142);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(72, 14);
-            this.labelControl10.TabIndex = 95;
-            this.labelControl10.Text = "销售顾问路径";
-            // 
             // PadToDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -410,12 +410,12 @@ namespace XHX.View
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDataPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboExamType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboProjects.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnShopCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtShopName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

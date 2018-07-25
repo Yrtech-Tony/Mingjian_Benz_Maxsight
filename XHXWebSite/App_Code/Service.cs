@@ -2206,7 +2206,7 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public void ShopRecheckUserSave(string projectCode, string shopCode, string recheckUserId, string inUserId)
     {
-        string sql = string.Format("exec up_DSAT_ShopRecheckUser_S '{0}','{1}','{2}','{3}'",projectCode,shopCode,recheckUserId,inUserId);
+        string sql = string.Format("exec up_DSAT_ShopRecheckUser_S '{0}','{1}','{2}','{3}'", projectCode, shopCode, recheckUserId, inUserId);
         CommonHandler.query(sql);
     }
     [WebMethod]
@@ -2376,6 +2376,29 @@ public class Service : System.Web.Services.WebService
     #endregion
 
     #endregion
+    #region 账号和经销商匹配管理
+    [WebMethod]
+    public void SaveUserInfoShop(string projectCode, string userId, string shopCode, string inUserId)
+    {
+        string sql = string.Format("EXEC UserInfoShop_S '{0}','{1}','{2}','{3}'",
+                                   projectCode, shopCode, userId, inUserId);
+        CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public DataSet SearchUserInfoShopList(string projectCode, string shopCode, string userId)
+    {
+        string sql = string.Format("EXEC UserInfoShop_R '{0}','{1}','{2}'",
+                                   projectCode, shopCode, userId);
+        return CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public DataSet SearchUserInfoAll(string projectCode)
+    {
+        string sql = string.Format("EXEC UserInfo_All_R '{0}'",
+                                   projectCode);
+        return CommonHandler.query(sql);
+    }
+    #endregion
     #endregion
     #region 打分网页版
 
@@ -2433,7 +2456,7 @@ public class Service : System.Web.Services.WebService
     [WebMethod]
     public void SaveSaleContantList(List<String> dataList)
     {
-        
+
         foreach (String data in dataList)
         {
             try
@@ -2444,7 +2467,7 @@ public class Service : System.Web.Services.WebService
                 string seqNO = properties[2];
                 string salesContant = properties[3];
                 string memberType = properties[4];
-               // CommonHandler.log(projectCode+" "+shopCode+" "+seqNO+" "+salesContant+" "+memberType);
+                // CommonHandler.log(projectCode+" "+shopCode+" "+seqNO+" "+salesContant+" "+memberType);
                 string sql = string.Format("EXEC up_DSAT_AnswerScoreDtlSalesConsltant_S '{0}','{1}','{2}','{3}','{4}'", projectCode, shopCode, seqNO, salesContant, memberType);
                 DataSet ds = CommonHandler.query(sql);
             }
@@ -2472,7 +2495,7 @@ public class Service : System.Web.Services.WebService
                 string lossDesc = properties[6];
                 string inuserId = properties[7];
                 //CommonHandler.log(projectCode + " " + subjectCode + " " + shopCode + " " + seqNO + " " + salesContant + " " + score + " " + lossDesc);
-                string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant,score, lossDesc, inuserId);
+                string sql = string.Format("EXEC up_DSAT_AnswerScoreDtl_Web_S '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}'", projectCode, subjectCode, shopCode, seqNO, salesContant, score, lossDesc, inuserId);
                 DataSet ds = CommonHandler.query(sql);
             }
             catch (Exception)
@@ -2483,6 +2506,22 @@ public class Service : System.Web.Services.WebService
         }
     }
 
+    #endregion
+    #region Mobile打分
+    [WebMethod]
+    public void SaveSaleContantInfo(string projectCode, string shopCode, string seqNO, string salesConsultant, string memberType)
+    {
+        try
+        {
+            string sql = string.Format("EXEC up_Upload_ShopConsultant_S @ProjectCode={0},@ShopCode={1},@SeqNO={2},@SalesConsultant={3},@MemberType={4}", projectCode, shopCode, seqNO, salesConsultant, memberType);
+            DataSet ds = CommonHandler.query(sql);
+
+        }
+        catch (Exception)
+        {
+
+        }
+    }
     #endregion
     #endregion
 
@@ -2504,9 +2543,9 @@ public class Service : System.Web.Services.WebService
         return ds;
     }
     [WebMethod]
-    public DataSet SearchShopForRecheckUser(string projectCode,string shopCode,string recheckUserId)
+    public DataSet SearchShopForRecheckUser(string projectCode, string shopCode, string recheckUserId)
     {
-        string sql = string.Format("EXEC [up_DSAT_ShopRecheckUser_R] '{0}','{1}','{2}' ", projectCode,shopCode,recheckUserId);//cboArea.SelectedItem
+        string sql = string.Format("EXEC [up_DSAT_ShopRecheckUser_R] '{0}','{1}','{2}' ", projectCode, shopCode, recheckUserId);//cboArea.SelectedItem
         DataSet ds = CommonHandler.query(sql);
 
         return ds;

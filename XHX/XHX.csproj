@@ -236,6 +236,7 @@
     <Compile Include="DTO\ChapterDto.cs" />
     <Compile Include="DTO\CheckOptionsDto.cs" />
     <Compile Include="DTO\AnswerErrorDataDto.cs" />
+    <Compile Include="DTO\UserInfoShopDto.cs" />
     <Compile Include="DTO\ShopRecheckUserDto.cs" />
     <Compile Include="DTO\SalesConsultantReportDto.cs" />
     <Compile Include="DTO\InspectionStandardReportDto.cs" />
@@ -561,6 +562,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AnswerErrorData.resx">
       <DependentUpon>AnswerErrorData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserInfoShop.resx">
+      <DependentUpon>UserInfoShop.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ShopRecord.resx">
@@ -1130,6 +1135,12 @@
     </Compile>
     <Compile Include="View\AnswerErrorData.Designer.cs">
       <DependentUpon>AnswerErrorData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserInfoShop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UserInfoShop.Designer.cs">
+      <DependentUpon>UserInfoShop.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ShopRecord.cs">
       <SubType>UserControl</SubType>

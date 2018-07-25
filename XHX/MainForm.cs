@@ -150,8 +150,6 @@ namespace XHX
             mainMenu.DropDownItems.Add(subMenu);
             subMenu = new ToolStripMenuItem("单店报告生成_每周", null, new EventHandler(menu_Click)); subMenu.Tag = "SingleShopReport_Week";
             mainMenu.DropDownItems.Add(subMenu);
-            subMenu = new ToolStripMenuItem("录音地址设置", null, new EventHandler(menu_Click)); subMenu.Tag = "ShopRecord";
-            mainMenu.DropDownItems.Add(subMenu);
             subMenu = new ToolStripMenuItem("复审人员分配", null, new EventHandler(menu_Click)); subMenu.Tag = "ShopRecheckUser";
             mainMenu.DropDownItems.Add(subMenu);
             subMenu = new ToolStripMenuItem("皮肤");
@@ -163,6 +161,12 @@ namespace XHX
             mainMenu.DropDownItems.Add(subMenu);
             ms.Items.Add(mainMenu);
 
+            mainMenu = new ToolStripMenuItem("报告平台设置");
+            subMenu = new ToolStripMenuItem("录音地址设置", null, new EventHandler(menu_Click)); subMenu.Tag = "ShopRecord";
+            mainMenu.DropDownItems.Add(subMenu);
+            subMenu = new ToolStripMenuItem("账户经销商设置", null, new EventHandler(menu_Click)); subMenu.Tag = "UserInfoShop";
+            mainMenu.DropDownItems.Add(subMenu);
+            ms.Items.Add(mainMenu);
 
             mainMenu = new ToolStripMenuItem("报告");
             //subMenu = new ToolStripMenuItem("数据导入", null, new EventHandler(menu_Click)); subMenu.Tag = "DataTrans";
