@@ -9266,21 +9266,22 @@ namespace XHX.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveUserInfoShop", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void SaveUserInfoShop(string projectCode, string userId, string shopCode, string inUserId) {
+        public void SaveUserInfoShop(string projectCode, string userId, string shopCode, string inUserId, char statusType) {
             this.Invoke("SaveUserInfoShop", new object[] {
                         projectCode,
                         userId,
                         shopCode,
-                        inUserId});
+                        inUserId,
+                        statusType});
         }
         
         /// <remarks/>
-        public void SaveUserInfoShopAsync(string projectCode, string userId, string shopCode, string inUserId) {
-            this.SaveUserInfoShopAsync(projectCode, userId, shopCode, inUserId, null);
+        public void SaveUserInfoShopAsync(string projectCode, string userId, string shopCode, string inUserId, char statusType) {
+            this.SaveUserInfoShopAsync(projectCode, userId, shopCode, inUserId, statusType, null);
         }
         
         /// <remarks/>
-        public void SaveUserInfoShopAsync(string projectCode, string userId, string shopCode, string inUserId, object userState) {
+        public void SaveUserInfoShopAsync(string projectCode, string userId, string shopCode, string inUserId, char statusType, object userState) {
             if ((this.SaveUserInfoShopOperationCompleted == null)) {
                 this.SaveUserInfoShopOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveUserInfoShopOperationCompleted);
             }
@@ -9288,7 +9289,8 @@ namespace XHX.localhost {
                         projectCode,
                         userId,
                         shopCode,
-                        inUserId}, this.SaveUserInfoShopOperationCompleted, userState);
+                        inUserId,
+                        statusType}, this.SaveUserInfoShopOperationCompleted, userState);
         }
         
         private void OnSaveUserInfoShopOperationCompleted(object arg) {

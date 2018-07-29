@@ -2378,7 +2378,7 @@ public class Service : System.Web.Services.WebService
     #endregion
     #region 账号和经销商匹配管理
     [WebMethod]
-    public void SaveUserInfoShop(string projectCode, string userId, string shopCode, string inUserId)
+    public void SaveUserInfoShop(string projectCode, string userId, string shopCode, string inUserId,char statusType)
     {
         string sql = string.Format("EXEC UserInfoShop_S '{0}','{1}','{2}','{3}'",
                                    projectCode, shopCode, userId, inUserId);
