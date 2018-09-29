@@ -2513,7 +2513,7 @@ public class Service : System.Web.Services.WebService
     {
         try
         {
-            string sql = string.Format("EXEC up_Upload_ShopConsultant_S @ProjectCode={0},@ShopCode={1},@SeqNO={2},@SalesConsultant={3},@MemberType={4}", projectCode, shopCode, seqNO, salesConsultant, memberType);
+            string sql = string.Format("EXEC up_Upload_ShopConsultant_S @ProjectCode='{0}',@ShopCode='{1}',@SeqNO='{2}',@SalesConsultant='{3}',@MemberType='{4}'", projectCode, shopCode, seqNO, salesConsultant, memberType);
             DataSet ds = CommonHandler.query(sql);
 
         }
@@ -3361,6 +3361,8 @@ public class Service : System.Web.Services.WebService
     {
         string sql = string.Format("INSERT INTO dbo.UserInfo VALUES('{0}','{1}','{2}','{3}',GETDATE(),'{4}','{5}')", userID, psw, roleType, inUserID, userName, macAddress);
         CommonHandler.query(sql);
+        string sql1 = string.Format("INSERT INTO dbo.UserInfoLog VALUES('{0}','{1}','{2}','{3}',GETDATE(),'{4}','{5}')", userID, psw, roleType, inUserID, userName, macAddress);
+        CommonHandler.query(sql1);
     }
     /// <summary>
     /// 
@@ -3384,8 +3386,10 @@ public class Service : System.Web.Services.WebService
     [WebMethod]//修改UserInfoDto
     public void UpdateUserInfoDto(string userID, string psw, string roleType, string inUserID, string userName, string macAddress)
     {
-        string sql = string.Format("UPDATE dbo.UserInfo SET PSW = '{1}', RoleType = '{2}',InUserID='{3}',InDateTime=GETDATE(),UserName = '{4}',MacAddress = '{5}' WHERE UserID = '{0}'", userID, psw, roleType, inUserID, userName, macAddress);
+        string sql = string.Format("UPDATE dbo.UserInfo SET PSW = '{1}', RoleType = '{2}',InUserID='{3}',UserName = '{4}',MacAddress = '{5}' WHERE UserID = '{0}'", userID, psw, roleType, inUserID, userName, macAddress);
         CommonHandler.query(sql);
+        string sql1 = string.Format("INSERT INTO dbo.UserInfoLog VALUES('{0}','{1}','{2}','{3}',GETDATE(),'{4}','{5}')", userID, psw, roleType, inUserID, userName, macAddress);
+        CommonHandler.query(sql1);
     }
     /// <summary>
     /// 
