@@ -54,9 +54,10 @@ namespace XHX.View
             string receptionistScore = msExcelUtil.GetCellValue(worksheet_FengMian, "C", 2).ToString();
             string saleScore = msExcelUtil.GetCellValue(worksheet_FengMian, "D", 2).ToString();
             service.UploadAllScore(projectCode, allScore,bdcScore, receptionistScore,saleScore,"", this.UserInfoDto.UserID);
-            for (int i = 5; i < 20; i++)
+            for (int i = 5; i < 100; i++)
             {
                 string charterCode = msExcelUtil.GetCellValue(worksheet_FengMian, i, 1).ToString();
+                if (string.IsNullOrEmpty(charterCode)) break;
                 if (!string.IsNullOrEmpty(charterCode))
                 {
                     string CharterScore = msExcelUtil.GetCellValue(worksheet_FengMian, i, 2).ToString();
@@ -72,9 +73,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["区域环节得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 2; i < 20; i++)
+            for (int i = 2; i < 100; i++)
             {
                 string areaCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(areaCode)) break;
                 if (!string.IsNullOrEmpty(areaCode))
                 {
                     string score = msExcelUtil.GetCellValue(worksheet_FengMian, "C", i).ToString();
@@ -102,9 +104,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["经销商环节得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 2; i < 520; i++)
+            for (int i = 2; i < 1000; i++)
             {
                 string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(shopCode)) break;
                 if (!string.IsNullOrEmpty(shopCode))
                 {
                     for (int j = 2; j < 15; j++)
@@ -117,6 +120,7 @@ namespace XHX.View
                         }
                     }
                 }
+                
             }
             CommonHandler.ShowMessage(MessageType.Information, "上传完毕");
         }
@@ -126,9 +130,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["经销商得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 3; i < 520; i++)
+            for (int i = 3; i < 1000; i++)
             {
                 string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(shopCode)) break;
                 if (!string.IsNullOrEmpty(shopCode))
                 {
                     string orderNO_All = msExcelUtil.GetCellValue(worksheet_FengMian, "B", i).ToString();
@@ -156,9 +161,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["区域体系得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 2; i < 20; i++)
+            for (int i = 2; i < 100; i++)
             {
                 string areaCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(areaCode)) break;
                 if (!string.IsNullOrEmpty(areaCode))
                 {
                     string areaTypeCode = msExcelUtil.GetCellValue(worksheet_FengMian, "B", i).ToString();
@@ -182,9 +188,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["销售顾问环节得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 2; i < 1590; i++)
+            for (int i = 2; i < 5000; i++)
             {
                 string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(shopCode)) break;
                 if (!string.IsNullOrEmpty(shopCode))
                 {
                     string salesName = msExcelUtil.GetCellValue(worksheet_FengMian, "B", i).ToString();
@@ -213,6 +220,7 @@ namespace XHX.View
             for (int i = 3; i < 1590; i++)
             {
                 string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(shopCode)) break;
                 if (!string.IsNullOrEmpty(shopCode))
                 {
                     string salesName = msExcelUtil.GetCellValue(worksheet_FengMian, "B", i).ToString();
@@ -242,9 +250,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["全国环节销售得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 1; i < 11; i++)
+            for (int i = 1; i < 20; i++)
             {
                 string charterCode = msExcelUtil.GetCellValue(worksheet_FengMian, i, 1).ToString();
+                if (string.IsNullOrEmpty(charterCode)) break;
                 if (!string.IsNullOrEmpty(charterCode))
                 {
                     string CharterScore = msExcelUtil.GetCellValue(worksheet_FengMian, i, 2).ToString();
@@ -260,9 +269,10 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["区域环节销售得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 2; i < 15; i++)
+            for (int i = 2; i < 50; i++)
             {
                 string areaCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
+                if (string.IsNullOrEmpty(areaCode)) break;
                 if (!string.IsNullOrEmpty(areaCode))
                 {
                     for (int j = 3; j < 15; j++)
