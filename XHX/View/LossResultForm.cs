@@ -70,7 +70,8 @@ namespace XHX.View
             selection3.CheckMarkColumn.VisibleIndex = 0;
             this.projectCode = projectCode;
             this.subjectCode = subjectCode;
-            SearchLoss(projectCode, subjectCode);
+            txtSubjectCode.Text = subjectCode;
+            SearchLoss(projectCode, txtSubjectCode.Text);
         }
 
         private void SearchLoss(string projectCode, string subjectCode)
@@ -280,6 +281,18 @@ namespace XHX.View
             {
                 e.Appearance.BackColor = Color.Gray;
             }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            SearchLoss(ProjectCode, txtSubjectCode.Text);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            if (grcLossResult1.DataSource != null)
+                //CommonHandler.ExcelExport(grvShopScore);
+                CommonHandler.ExcelExportByExporter(grvLossResult1);
         }
     }
 }
