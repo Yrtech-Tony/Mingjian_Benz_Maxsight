@@ -39,7 +39,7 @@
     <PublisherName>北京怡睿科技发展有限公司</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>162</ApplicationRevision>
+    <ApplicationRevision>164</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>false</BootstrapperEnabled>
@@ -236,6 +236,7 @@
     <Compile Include="DTO\ChapterDto.cs" />
     <Compile Include="DTO\CheckOptionsDto.cs" />
     <Compile Include="DTO\AnswerErrorDataDto.cs" />
+    <Compile Include="DTO\ShopReportUploadDto.cs" />
     <Compile Include="DTO\UserInfoShopDto.cs" />
     <Compile Include="DTO\ShopRecheckUserDto.cs" />
     <Compile Include="DTO\SalesConsultantReportDto.cs" />
@@ -562,6 +563,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\AnswerErrorData.resx">
       <DependentUpon>AnswerErrorData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ShopReportUpload.resx">
+      <DependentUpon>ShopReportUpload.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UserInfoShop.resx">
@@ -1135,6 +1140,12 @@
     </Compile>
     <Compile Include="View\AnswerErrorData.Designer.cs">
       <DependentUpon>AnswerErrorData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShopReportUpload.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ShopReportUpload.Designer.cs">
+      <DependentUpon>ShopReportUpload.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UserInfoShop.cs">
       <SubType>UserControl</SubType>

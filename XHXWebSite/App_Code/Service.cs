@@ -2376,6 +2376,22 @@ public class Service : System.Web.Services.WebService
     #endregion
 
     #endregion
+    #region 经销商报告上传日期管理
+    [WebMethod]
+    public void SaveShopReportUpload(string projectCode, string shopCode, string uploadDate, string uploadDate2, string userId)
+    {
+        string sql = string.Format("EXEC ShopReportUpload_S '{0}','{1}','{2}','{3}','{4}'",
+                                   projectCode, shopCode, uploadDate, uploadDate2, userId);
+        CommonHandler.query(sql);
+    }
+    [WebMethod]
+    public DataSet SearchShopReportUploadlList(string projectCode, string shopCode)
+    {
+        string sql = string.Format("EXEC ShopReportUpload_R '{0}','{1}'",
+                                   projectCode, shopCode);
+        return CommonHandler.query(sql);
+    }
+    #endregion
     #region 账号和经销商匹配管理
     [WebMethod]
     public void SaveUserInfoShop(string projectCode, string userId, string shopCode, string inUserId,char statusType)
@@ -2817,8 +2833,8 @@ public class Service : System.Web.Services.WebService
         string sql = String.Empty;
         if (statusType == 'I')
         {
-            sql = string.Format("EXEC up_DSAT_Projects_S '{0}','{1}','{2}','{3}','{4}','{5}'", year + quarter,
-                year + quarter, "sysadmin", year, quarter, orderNO);
+            sql = string.Format("EXEC up_DSAT_Projects_S '{0}','{1}','{2}','{3}','{4}','{5}'", projectCode,
+                projectCode, "sysadmin", year, quarter, orderNO);
         }
         else if (statusType == 'U')
         {

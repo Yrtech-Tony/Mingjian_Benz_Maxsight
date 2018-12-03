@@ -3,6 +3,47 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetSubjectTypeForCbo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSubjectTypeForCboResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubjectTypeForCboResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchReCheckDtl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subjectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recheckType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchReCheckDtlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchReCheckDtlResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SearchReCheckDtlSumError">
         <s:complexType>
           <s:sequence>
@@ -33,6 +74,45 @@
       </s:element>
       <s:element name="DownExcelReportResponse">
         <s:complexType />
+      </s:element>
+      <s:element name="GetProjectsAndShopInfo">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProjectsAndShopInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsAndShopInfoResult" type="tns:ArrayOfDataSet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDataSet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DataSet" nillable="true">
+            <s:complexType>
+              <s:sequence>
+                <s:element ref="s:schema" />
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubjectAndAnswerInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopcde" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subjectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="examTypeCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubjectAndAnswerInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubjectAndAnswerInfoResult" type="tns:ArrayOfDataSet" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="SearchAnswer">
         <s:complexType>
@@ -664,18 +744,6 @@
       <s:complexType name="ArrayOfArrayOfDataSet">
         <s:sequence>
           <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfDataSet" nillable="true" type="tns:ArrayOfDataSet" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="ArrayOfDataSet">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="DataSet" nillable="true">
-            <s:complexType>
-              <s:sequence>
-                <s:element ref="s:schema" />
-                <s:any />
-              </s:sequence>
-            </s:complexType>
-          </s:element>
         </s:sequence>
       </s:complexType>
       <s:element name="SearchScoreRateForChapter">
@@ -2062,47 +2130,6 @@
       </s:element>
       <s:element name="SaveArbitrationTeamAlterResponse">
         <s:complexType />
-      </s:element>
-      <s:element name="GetSubjectTypeForCbo">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetSubjectTypeForCboResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSubjectTypeForCboResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:element ref="s:schema" />
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SearchReCheckDtl">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="subjectCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="recheckType" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SearchReCheckDtlResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchReCheckDtlResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:element ref="s:schema" />
-                  <s:any />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
-          </s:sequence>
-        </s:complexType>
       </s:element>
       <s:element name="SearchProjectNameAndCode">
         <s:complexType />
@@ -4387,6 +4414,42 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SaveShopReportUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uploadDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="uploadDate2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveShopReportUploadResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchShopReportUploadlList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchShopReportUploadlListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchShopReportUploadlListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="SaveUserInfoShop">
         <s:complexType>
           <s:sequence>
@@ -4445,33 +4508,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetProjectsAndShopInfo">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetProjectsAndShopInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsAndShopInfoResult" type="tns:ArrayOfDataSet" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSubjectAndAnswerInfo">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="projectCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="shopcde" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="subjectCode" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="examTypeCode" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetSubjectAndAnswerInfoResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetSubjectAndAnswerInfoResult" type="tns:ArrayOfDataSet" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="char">
@@ -4479,6 +4515,18 @@
       </s:simpleType>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="GetSubjectTypeForCboSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubjectTypeForCbo" />
+  </wsdl:message>
+  <wsdl:message name="GetSubjectTypeForCboSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubjectTypeForCboResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchReCheckDtlSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchReCheckDtl" />
+  </wsdl:message>
+  <wsdl:message name="SearchReCheckDtlSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchReCheckDtlResponse" />
+  </wsdl:message>
   <wsdl:message name="SearchReCheckDtlSumErrorSoapIn">
     <wsdl:part name="parameters" element="tns:SearchReCheckDtlSumError" />
   </wsdl:message>
@@ -4490,6 +4538,18 @@
   </wsdl:message>
   <wsdl:message name="DownExcelReportSoapOut">
     <wsdl:part name="parameters" element="tns:DownExcelReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsAndShopInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjectsAndShopInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsAndShopInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectsAndShopInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubjectAndAnswerInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubjectAndAnswerInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetSubjectAndAnswerInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubjectAndAnswerInfoResponse" />
   </wsdl:message>
   <wsdl:message name="SearchAnswerSoapIn">
     <wsdl:part name="parameters" element="tns:SearchAnswer" />
@@ -5162,18 +5222,6 @@
   </wsdl:message>
   <wsdl:message name="SaveArbitrationTeamAlterSoapOut">
     <wsdl:part name="parameters" element="tns:SaveArbitrationTeamAlterResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSubjectTypeForCboSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSubjectTypeForCbo" />
-  </wsdl:message>
-  <wsdl:message name="GetSubjectTypeForCboSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSubjectTypeForCboResponse" />
-  </wsdl:message>
-  <wsdl:message name="SearchReCheckDtlSoapIn">
-    <wsdl:part name="parameters" element="tns:SearchReCheckDtl" />
-  </wsdl:message>
-  <wsdl:message name="SearchReCheckDtlSoapOut">
-    <wsdl:part name="parameters" element="tns:SearchReCheckDtlResponse" />
   </wsdl:message>
   <wsdl:message name="SearchProjectNameAndCodeSoapIn">
     <wsdl:part name="parameters" element="tns:SearchProjectNameAndCode" />
@@ -5907,6 +5955,18 @@
   <wsdl:message name="SearchShopRecordUrlListSoapOut">
     <wsdl:part name="parameters" element="tns:SearchShopRecordUrlListResponse" />
   </wsdl:message>
+  <wsdl:message name="SaveShopReportUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveShopReportUpload" />
+  </wsdl:message>
+  <wsdl:message name="SaveShopReportUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveShopReportUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopReportUploadlListSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchShopReportUploadlList" />
+  </wsdl:message>
+  <wsdl:message name="SearchShopReportUploadlListSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchShopReportUploadlListResponse" />
+  </wsdl:message>
   <wsdl:message name="SaveUserInfoShopSoapIn">
     <wsdl:part name="parameters" element="tns:SaveUserInfoShop" />
   </wsdl:message>
@@ -5925,19 +5985,15 @@
   <wsdl:message name="SearchUserInfoAllSoapOut">
     <wsdl:part name="parameters" element="tns:SearchUserInfoAllResponse" />
   </wsdl:message>
-  <wsdl:message name="GetProjectsAndShopInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetProjectsAndShopInfo" />
-  </wsdl:message>
-  <wsdl:message name="GetProjectsAndShopInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetProjectsAndShopInfoResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetSubjectAndAnswerInfoSoapIn">
-    <wsdl:part name="parameters" element="tns:GetSubjectAndAnswerInfo" />
-  </wsdl:message>
-  <wsdl:message name="GetSubjectAndAnswerInfoSoapOut">
-    <wsdl:part name="parameters" element="tns:GetSubjectAndAnswerInfoResponse" />
-  </wsdl:message>
   <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetSubjectTypeForCbo">
+      <wsdl:input message="tns:GetSubjectTypeForCboSoapIn" />
+      <wsdl:output message="tns:GetSubjectTypeForCboSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchReCheckDtl">
+      <wsdl:input message="tns:SearchReCheckDtlSoapIn" />
+      <wsdl:output message="tns:SearchReCheckDtlSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SearchReCheckDtlSumError">
       <wsdl:input message="tns:SearchReCheckDtlSumErrorSoapIn" />
       <wsdl:output message="tns:SearchReCheckDtlSumErrorSoapOut" />
@@ -5945,6 +6001,14 @@
     <wsdl:operation name="DownExcelReport">
       <wsdl:input message="tns:DownExcelReportSoapIn" />
       <wsdl:output message="tns:DownExcelReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsAndShopInfo">
+      <wsdl:input message="tns:GetProjectsAndShopInfoSoapIn" />
+      <wsdl:output message="tns:GetProjectsAndShopInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubjectAndAnswerInfo">
+      <wsdl:input message="tns:GetSubjectAndAnswerInfoSoapIn" />
+      <wsdl:output message="tns:GetSubjectAndAnswerInfoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchAnswer">
       <wsdl:input message="tns:SearchAnswerSoapIn" />
@@ -6393,14 +6457,6 @@
     <wsdl:operation name="SaveArbitrationTeamAlter">
       <wsdl:input message="tns:SaveArbitrationTeamAlterSoapIn" />
       <wsdl:output message="tns:SaveArbitrationTeamAlterSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSubjectTypeForCbo">
-      <wsdl:input message="tns:GetSubjectTypeForCboSoapIn" />
-      <wsdl:output message="tns:GetSubjectTypeForCboSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="SearchReCheckDtl">
-      <wsdl:input message="tns:SearchReCheckDtlSoapIn" />
-      <wsdl:output message="tns:SearchReCheckDtlSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="SearchProjectNameAndCode">
       <wsdl:input message="tns:SearchProjectNameAndCodeSoapIn" />
@@ -6890,6 +6946,14 @@
       <wsdl:input message="tns:SearchShopRecordUrlListSoapIn" />
       <wsdl:output message="tns:SearchShopRecordUrlListSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="SaveShopReportUpload">
+      <wsdl:input message="tns:SaveShopReportUploadSoapIn" />
+      <wsdl:output message="tns:SaveShopReportUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopReportUploadlList">
+      <wsdl:input message="tns:SearchShopReportUploadlListSoapIn" />
+      <wsdl:output message="tns:SearchShopReportUploadlListSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="SaveUserInfoShop">
       <wsdl:input message="tns:SaveUserInfoShopSoapIn" />
       <wsdl:output message="tns:SaveUserInfoShopSoapOut" />
@@ -6902,17 +6966,27 @@
       <wsdl:input message="tns:SearchUserInfoAllSoapIn" />
       <wsdl:output message="tns:SearchUserInfoAllSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetProjectsAndShopInfo">
-      <wsdl:input message="tns:GetProjectsAndShopInfoSoapIn" />
-      <wsdl:output message="tns:GetProjectsAndShopInfoSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetSubjectAndAnswerInfo">
-      <wsdl:input message="tns:GetSubjectAndAnswerInfoSoapIn" />
-      <wsdl:output message="tns:GetSubjectAndAnswerInfoSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSubjectTypeForCbo">
+      <soap:operation soapAction="http://tempuri.org/GetSubjectTypeForCbo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchReCheckDtl">
+      <soap:operation soapAction="http://tempuri.org/SearchReCheckDtl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchReCheckDtlSumError">
       <soap:operation soapAction="http://tempuri.org/SearchReCheckDtlSumError" style="document" />
       <wsdl:input>
@@ -6924,6 +6998,24 @@
     </wsdl:operation>
     <wsdl:operation name="DownExcelReport">
       <soap:operation soapAction="http://tempuri.org/DownExcelReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsAndShopInfo">
+      <soap:operation soapAction="http://tempuri.org/GetProjectsAndShopInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubjectAndAnswerInfo">
+      <soap:operation soapAction="http://tempuri.org/GetSubjectAndAnswerInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -7932,24 +8024,6 @@
     </wsdl:operation>
     <wsdl:operation name="SaveArbitrationTeamAlter">
       <soap:operation soapAction="http://tempuri.org/SaveArbitrationTeamAlter" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSubjectTypeForCbo">
-      <soap:operation soapAction="http://tempuri.org/GetSubjectTypeForCbo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchReCheckDtl">
-      <soap:operation soapAction="http://tempuri.org/SearchReCheckDtl" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -9055,6 +9129,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveShopReportUpload">
+      <soap:operation soapAction="http://tempuri.org/SaveShopReportUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopReportUploadlList">
+      <soap:operation soapAction="http://tempuri.org/SearchShopReportUploadlList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveUserInfoShop">
       <soap:operation soapAction="http://tempuri.org/SaveUserInfoShop" style="document" />
       <wsdl:input>
@@ -9082,27 +9174,27 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetProjectsAndShopInfo">
-      <soap:operation soapAction="http://tempuri.org/GetProjectsAndShopInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSubjectAndAnswerInfo">
-      <soap:operation soapAction="http://tempuri.org/GetSubjectAndAnswerInfo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSubjectTypeForCbo">
+      <soap12:operation soapAction="http://tempuri.org/GetSubjectTypeForCbo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchReCheckDtl">
+      <soap12:operation soapAction="http://tempuri.org/SearchReCheckDtl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SearchReCheckDtlSumError">
       <soap12:operation soapAction="http://tempuri.org/SearchReCheckDtlSumError" style="document" />
       <wsdl:input>
@@ -9114,6 +9206,24 @@
     </wsdl:operation>
     <wsdl:operation name="DownExcelReport">
       <soap12:operation soapAction="http://tempuri.org/DownExcelReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectsAndShopInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetProjectsAndShopInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubjectAndAnswerInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetSubjectAndAnswerInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -10122,24 +10232,6 @@
     </wsdl:operation>
     <wsdl:operation name="SaveArbitrationTeamAlter">
       <soap12:operation soapAction="http://tempuri.org/SaveArbitrationTeamAlter" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSubjectTypeForCbo">
-      <soap12:operation soapAction="http://tempuri.org/GetSubjectTypeForCbo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="SearchReCheckDtl">
-      <soap12:operation soapAction="http://tempuri.org/SearchReCheckDtl" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -11245,6 +11337,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SaveShopReportUpload">
+      <soap12:operation soapAction="http://tempuri.org/SaveShopReportUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchShopReportUploadlList">
+      <soap12:operation soapAction="http://tempuri.org/SearchShopReportUploadlList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="SaveUserInfoShop">
       <soap12:operation soapAction="http://tempuri.org/SaveUserInfoShop" style="document" />
       <wsdl:input>
@@ -11265,24 +11375,6 @@
     </wsdl:operation>
     <wsdl:operation name="SearchUserInfoAll">
       <soap12:operation soapAction="http://tempuri.org/SearchUserInfoAll" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetProjectsAndShopInfo">
-      <soap12:operation soapAction="http://tempuri.org/GetProjectsAndShopInfo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetSubjectAndAnswerInfo">
-      <soap12:operation soapAction="http://tempuri.org/GetSubjectAndAnswerInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

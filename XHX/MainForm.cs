@@ -166,6 +166,8 @@ namespace XHX
             mainMenu.DropDownItems.Add(subMenu);
             subMenu = new ToolStripMenuItem("账户经销商设置", null, new EventHandler(menu_Click)); subMenu.Tag = "UserInfoShop";
             mainMenu.DropDownItems.Add(subMenu);
+            subMenu = new ToolStripMenuItem("报告上传时间设置", null, new EventHandler(menu_Click)); subMenu.Tag = "ShopReportUpload";
+            mainMenu.DropDownItems.Add(subMenu);
             ms.Items.Add(mainMenu);
 
             mainMenu = new ToolStripMenuItem("报告");
