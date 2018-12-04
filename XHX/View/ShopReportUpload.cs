@@ -53,8 +53,8 @@ namespace XHX.View
                     exam.ProjectCode = Convert.ToString(ds.Tables[0].Rows[i]["ProjectCode"]);
                     exam.ShopCode = Convert.ToString(ds.Tables[0].Rows[i]["ShopCode"]);
                     exam.ShopName = Convert.ToString(ds.Tables[0].Rows[i]["ShopName"]);
-                    
-                    if (ds.Tables[0].Rows[i]["InDateTime"] != DBNull.Value)
+
+                    if (ds.Tables[0].Rows[i]["UploadDate"] != DBNull.Value)
                     {
                         exam.UploadDate = Convert.ToDateTime(ds.Tables[0].Rows[i]["UploadDate"]);
                     }
@@ -62,8 +62,8 @@ namespace XHX.View
                     {
                         exam.UploadDate = null;
                     }
-                   
-                    if (ds.Tables[0].Rows[i]["InDateTime"] != DBNull.Value)
+
+                    if (ds.Tables[0].Rows[i]["UploadDate2"] != DBNull.Value)
                     {
                         exam.UploadDate2 = Convert.ToDateTime(ds.Tables[0].Rows[i]["UploadDate2"]);
                     }
