@@ -73,11 +73,11 @@ namespace XHX.View
                     reCheckDtl.ShopName = Convert.ToString(ds.Tables[0].Rows[i]["ShopName"]);
                     if (ds.Tables[0].Rows[i]["Score"] == DBNull.Value)
                     {
-                        reCheckDtl.Score = null;
+                        reCheckDtl.ScoreStr = "/";
                     }
                     else
                     {
-                        reCheckDtl.Score = Convert.ToDecimal(ds.Tables[0].Rows[i]["Score"]);
+                        reCheckDtl.ScoreStr = Convert.ToString(ds.Tables[0].Rows[i]["Score"]);
                     }
                     reCheckDtl.SeqNO = Convert.ToInt32(ds.Tables[0].Rows[i]["SeqNO"]);
                     reCheckDtl.SalesConsultant = Convert.ToString(ds.Tables[0].Rows[i]["SalesConsultant"]);

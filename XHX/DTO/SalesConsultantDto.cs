@@ -14,6 +14,7 @@ namespace XHX.DTO
         public int SeqNO { get; set; }
         public string SalesConsultant { get; set; }
         public decimal? Score { get; set; }
+        public string ScoreStr { get; set; }
         public bool Notinvolved { get; set; }
         public string LossDesc { get; set; }
         public string MemberType { get; set; }

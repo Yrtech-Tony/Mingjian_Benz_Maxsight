@@ -212,7 +212,7 @@
             this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn4.Caption = "分数";
-            this.gridColumn4.FieldName = "Score";
+            this.gridColumn4.FieldName = "ScoreStr";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
