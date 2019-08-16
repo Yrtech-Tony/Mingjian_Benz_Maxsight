@@ -130,7 +130,7 @@ namespace XHX.View
             Workbook workbook = msExcelUtil.OpenExcelByMSExcel(btnModule.Text);
             Worksheet worksheet_FengMian = workbook.Worksheets["经销商得分"] as Worksheet;
             string projectCode = CommonHandler.GetComboBoxSelectedValue(cboProjects).ToString();
-            for (int i = 3; i < 1000; i++)
+            for (int i = 3; i < 10000; i++)
             {
                 string shopCode = msExcelUtil.GetCellValue(worksheet_FengMian, "A", i).ToString();
                 if (string.IsNullOrEmpty(shopCode)) break;
@@ -141,12 +141,14 @@ namespace XHX.View
                     string score = msExcelUtil.GetCellValue(worksheet_FengMian, "D", i).ToString();
                     string mustLoss = msExcelUtil.GetCellValue(worksheet_FengMian, "E", i).ToString();
                     string saleContant = msExcelUtil.GetCellValue(worksheet_FengMian, "F", i).ToString();
-                    service.UploadShopScore(projectCode, shopCode, score, Convert.ToInt32(orderNO_All), 0, Convert.ToInt32(orderNO_Area), mustLoss, this.UserInfoDto.UserID, saleContant);
-                    for (int j = 7; j < 120; j++)
+                    string servicConvention = msExcelUtil.GetCellValue(worksheet_FengMian, "G", i).ToString();
+                    service.UploadShopScore(projectCode, shopCode, score, Convert.ToInt32(orderNO_All), 0, Convert.ToInt32(orderNO_Area), mustLoss, this.UserInfoDto.UserID, saleContant,servicConvention);
+                    for (int j = 8; j < 150; j++)
                     {
                         string subjectCode = msExcelUtil.GetCellValue(worksheet_FengMian, j, 1).ToString();
                         string score1 = msExcelUtil.GetCellValue(worksheet_FengMian, j, i).ToString();
                         string fullScore = msExcelUtil.GetCellValue(worksheet_FengMian, j, 2).ToString();
+                        if (string.IsNullOrEmpty(subjectCode)) break;
                         if (!string.IsNullOrEmpty(subjectCode))
                             service.UploadShopSubjectScore(projectCode, shopCode, subjectCode, score1, "", fullScore, this.UserInfoDto.UserID);
                     }
