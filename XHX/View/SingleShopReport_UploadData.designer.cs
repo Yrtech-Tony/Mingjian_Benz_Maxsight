@@ -26,6 +26,7 @@
         private void InitializeComponent()
         {
             this.grdShop = new DevExpress.XtraEditors.PanelControl();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.cboProjects = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -40,7 +41,6 @@
             this.btnShopCharter = new DevExpress.XtraEditors.SimpleButton();
             this.btnAreaCharter = new DevExpress.XtraEditors.SimpleButton();
             this.btnAllCharter = new DevExpress.XtraEditors.SimpleButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdShop)).BeginInit();
             this.grdShop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboProjects.Properties)).BeginInit();
@@ -60,6 +60,17 @@
             this.grdShop.Name = "grdShop";
             this.grdShop.Size = new System.Drawing.Size(982, 42);
             this.grdShop.TabIndex = 11;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(280, 12);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(108, 16);
+            this.checkBox1.TabIndex = 13;
+            this.checkBox1.Text = "上传到报告平台";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // labelControl1
             // 
@@ -106,6 +117,7 @@
             this.btnAreaCharterSale.Size = new System.Drawing.Size(109, 44);
             this.btnAreaCharterSale.TabIndex = 99;
             this.btnAreaCharterSale.Text = "区域环节销售得分";
+            this.btnAreaCharterSale.Visible = false;
             this.btnAreaCharterSale.Click += new System.EventHandler(this.btnAreaCharterSale_Click);
             // 
             // btnCharterSale
@@ -115,6 +127,7 @@
             this.btnCharterSale.Size = new System.Drawing.Size(115, 45);
             this.btnCharterSale.TabIndex = 98;
             this.btnCharterSale.Text = "全国环节销售得分";
+            this.btnCharterSale.Visible = false;
             this.btnCharterSale.Click += new System.EventHandler(this.btnCharterSale_Click);
             // 
             // btnsaleContantSubject
@@ -124,6 +137,7 @@
             this.btnsaleContantSubject.Size = new System.Drawing.Size(115, 45);
             this.btnsaleContantSubject.TabIndex = 97;
             this.btnsaleContantSubject.Text = "销售顾问体系得分";
+            this.btnsaleContantSubject.Visible = false;
             this.btnsaleContantSubject.Click += new System.EventHandler(this.btnsaleContantSubject_Click);
             // 
             // btnSalesCharter
@@ -133,6 +147,7 @@
             this.btnSalesCharter.Size = new System.Drawing.Size(115, 45);
             this.btnSalesCharter.TabIndex = 96;
             this.btnSalesCharter.Text = "销售顾问环节得分";
+            this.btnSalesCharter.Visible = false;
             this.btnSalesCharter.Click += new System.EventHandler(this.btnSalesCharter_Click);
             // 
             // btnAreaSubject
@@ -200,17 +215,6 @@
             this.btnAllCharter.TabIndex = 88;
             this.btnAllCharter.Text = "全国环节得分";
             this.btnAllCharter.Click += new System.EventHandler(this.btnAllCharter_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(280, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(108, 16);
-            this.checkBox1.TabIndex = 13;
-            this.checkBox1.Text = "上传到报告平台";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // SingleShopReport_UploadData
             // 
